@@ -248,7 +248,7 @@
 @media (max-width: 600px) {
 
   .weapon-title {
-    padding: 30px 0;
+    padding: 22px 0;
   }
 
   .weapon-title h1 {
@@ -257,8 +257,8 @@
   }
 
   .silver-key-title {
-    width: 104px;
-    height: 104px;
+    width: 120px;
+    height: 120px;
   }
 
 }
@@ -1138,6 +1138,78 @@ body {
   100% {
     opacity: 0;
     transform: scale(0.3);
+  }
+
+}
+
+
+
+
+
+
+    /* ========================================
+   ページトップへ戻る：銀の鍵
+======================================== */
+
+.back-to-top {
+  position: fixed;
+
+  right: 24px;
+  bottom: 24px;
+
+  width: 58px;
+  height: 58px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  z-index: 100;
+
+  text-decoration: none;
+
+  opacity: 0.65;
+
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease,
+    filter 0.3s ease;
+}
+
+.back-to-top img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+
+  filter:
+    drop-shadow(0 0 4px rgba(220, 215, 235, 0.35))
+    drop-shadow(0 0 10px rgba(154, 117, 209, 0.2));
+}
+
+.back-to-top:hover {
+  opacity: 1;
+
+  transform: scale(1.08);
+
+  filter:
+    drop-shadow(0 0 7px rgba(240, 238, 250, 0.55))
+    drop-shadow(0 0 16px rgba(154, 117, 209, 0.4));
+}
+
+
+/* ========================================
+   スマートフォン
+======================================== */
+
+@media (max-width: 600px) {
+
+  .back-to-top {
+    right: 12px;
+    bottom: 14px;
+
+    width: 48px;
+    height: 48px;
   }
 
 }
@@ -2656,6 +2728,16 @@ function scheduleTwinkle() {
 
 scheduleTwinkle();
 </script>
+
+
+
+
+
+
+
+  <a href="#" class="back-to-top" aria-label="ページの先頭へ戻る">
+  <img src="silver-key.png" alt="">
+</a>
 
 
   
