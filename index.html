@@ -1147,7 +1147,7 @@ body {
 
 
 
-    /* ========================================
+/* ========================================
    ページトップへ戻る：銀の鍵
 ======================================== */
 
@@ -1157,8 +1157,8 @@ body {
   right: 24px;
   bottom: 24px;
 
-  width: 58px;
-  height: 58px;
+  width: 72px;
+  height: 72px;
 
   display: flex;
   align-items: center;
@@ -1168,12 +1168,23 @@ body {
 
   text-decoration: none;
 
-  opacity: 0.65;
+  opacity: 0;
+  visibility: hidden;
+
+  transform: translateY(12px) scale(0.9);
 
   transition:
-    opacity 0.3s ease,
-    transform 0.3s ease,
+    opacity 0.45s ease,
+    visibility 0.45s ease,
+    transform 0.45s ease,
     filter 0.3s ease;
+}
+
+.back-to-top.show {
+  opacity: 0.72;
+  visibility: visible;
+
+  transform: translateY(0) scale(1);
 }
 
 .back-to-top img {
@@ -1183,18 +1194,24 @@ body {
   object-fit: contain;
 
   filter:
-    drop-shadow(0 0 4px rgba(220, 215, 235, 0.35))
-    drop-shadow(0 0 10px rgba(154, 117, 209, 0.2));
+    drop-shadow(0 0 5px rgba(220, 215, 235, 0.35))
+    drop-shadow(0 0 12px rgba(154, 117, 209, 0.2));
+
+  transition:
+    filter 0.3s ease,
+    transform 0.3s ease;
 }
 
 .back-to-top:hover {
   opacity: 1;
 
-  transform: scale(1.08);
+  transform: translateY(0) scale(1.08);
+}
 
+.back-to-top:hover img {
   filter:
-    drop-shadow(0 0 7px rgba(240, 238, 250, 0.55))
-    drop-shadow(0 0 16px rgba(154, 117, 209, 0.4));
+    drop-shadow(0 0 8px rgba(240, 238, 250, 0.55))
+    drop-shadow(0 0 18px rgba(154, 117, 209, 0.4));
 }
 
 
@@ -1205,11 +1222,11 @@ body {
 @media (max-width: 600px) {
 
   .back-to-top {
-    right: 12px;
-    bottom: 14px;
+    right: 10px;
+    bottom: 12px;
 
-    width: 48px;
-    height: 48px;
+    width: 60px;
+    height: 60px;
   }
 
 }
@@ -2730,6 +2747,31 @@ scheduleTwinkle();
 </script>
 
 
+
+ <script>
+  const backToTop = document.querySelector(".back-to-top");
+
+window.addEventListener("scroll", () => {
+
+  if (window.scrollY > 300) {
+    backToTop.classList.add("show");
+  } else {
+    backToTop.classList.remove("show");
+  }
+
+});
+
+backToTop.addEventListener("click", (event) => {
+
+  event.preventDefault();
+
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+
+});
+</script>
 
 
 
