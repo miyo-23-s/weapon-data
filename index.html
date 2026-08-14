@@ -175,6 +175,117 @@
     }
 
 
+
+
+    /* ========================================
+   武器データ 注釈
+======================================== */
+
+.weapon-notice {
+  margin: 0 0 28px;
+  padding: 20px 22px;
+  border: 1px solid rgba(190, 190, 210, 0.35);
+  border-radius: 12px;
+  background:
+    linear-gradient(
+      135deg,
+      rgba(35, 22, 55, 0.96),
+      rgba(18, 15, 30, 0.96)
+    );
+  box-shadow:
+    0 4px 18px rgba(0, 0, 0, 0.25),
+    inset 0 0 18px rgba(255, 255, 255, 0.025);
+}
+
+.notice-title {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-bottom: 14px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(190, 190, 210, 0.2);
+
+  color: #e8e5ef;
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+.notice-icon {
+  color: #d8d3e3;
+  font-size: 0.9em;
+}
+
+.notice-body {
+  color: #c9c5d1;
+  font-size: 0.88rem;
+  line-height: 1.8;
+}
+
+.notice-body p {
+  margin: 0 0 12px;
+}
+
+.notice-body ul {
+  margin: 0 0 14px;
+  padding-left: 1.4em;
+}
+
+.notice-body li {
+  margin: 3px 0;
+}
+
+.notice-body code {
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.35);
+  color: #e2ddeb;
+  font-family: monospace;
+  font-size: 0.95em;
+}
+
+.notice-copy {
+  margin-top: 14px;
+  padding: 11px 14px;
+  border-left: 3px solid rgba(210, 200, 225, 0.7);
+  border-radius: 0 6px 6px 0;
+  background: rgba(255, 255, 255, 0.045);
+  color: #d8d3df;
+}
+
+.notice-copy strong {
+  color: #f0edf5;
+}
+
+
+/* スマホ */
+@media (max-width: 600px) {
+
+  .weapon-notice {
+    margin-bottom: 22px;
+    padding: 16px 17px;
+    border-radius: 10px;
+  }
+
+  .notice-title {
+    margin-bottom: 11px;
+    font-size: 0.98rem;
+  }
+
+  .notice-body {
+    font-size: 0.82rem;
+    line-height: 1.75;
+  }
+
+  .notice-copy {
+    padding: 10px 11px;
+  }
+
+}
+
+    
+
+
     /* =========================
        大カテゴリ
     ========================= */
@@ -661,6 +772,54 @@
       <div class="header-line"></div>
 
     </header>
+
+
+
+
+
+
+    
+
+
+    <div class="weapon-notice">
+
+  <div class="notice-title">
+    <span class="notice-icon">✦</span>
+    武器データについて
+  </div>
+
+  <div class="notice-body">
+
+    <p>
+      シナリオもしくはPLから指定がない場合、基本的な武器のダメージは下記に従って算出する。<br>
+      「クトゥルフ2010」より引用、一部改変。
+    </p>
+
+    <ul>
+      <li>命中率は初期値を示します。</li>
+      <li>「貫通」と記載された武器は、相手の装甲を無視してダメージを与えます。</li>
+      <li>故障ナンバーは、指定の出目以上が出た場合に適用されます。</li>
+      <li>
+        ココフォリアでは「命中率(故障ナンバー)」の形式でダイス指定すると、
+        故障ナンバーが自動的に反映されます。<br>
+        例：<code>CCB&lt;=50(95)</code> → 95以上が出た場合、故障ナンバーが適用されます。
+      </li>
+    </ul>
+
+    <div class="notice-copy">
+      🎲 各武器には、初期命中率・故障ナンバーを反映した
+      <strong>命中判定</strong>と<strong>ダメージ判定</strong>の
+      コピーボタンを用意しています。必要に応じてご利用ください。
+    </div>
+
+  </div>
+
+</div>
+
+
+
+
+    
 
 
     <!-- =========================
