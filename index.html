@@ -1171,22 +1171,15 @@ body {
   opacity: 0;
   visibility: hidden;
 
-  transform: translateY(12px) scale(0.9);
-
   transition:
     opacity 0.45s ease,
-    visibility 0.45s ease,
-    transform 0.45s ease,
-    filter 0.3s ease;
+    visibility 0.45s ease;
 }
 
 .back-to-top.show {
   opacity: 0.72;
   visibility: visible;
 
-  transform: translateY(0) scale(1);
-
-  /* ゆっくり浮遊 */
   animation: keyFloat 4s ease-in-out infinite;
 }
 
@@ -1214,15 +1207,11 @@ body {
 
   0%,
   100% {
-    transform:
-      translateY(0)
-      rotate(-1deg);
+    transform: translateY(0) rotate(-1deg);
   }
 
   50% {
-    transform:
-      translateY(-7px)
-      rotate(1deg);
+    transform: translateY(-7px) rotate(1deg);
   }
 
 }
@@ -2807,7 +2796,7 @@ backToTop.addEventListener("click", (event) => {
 
 
 
-  <a href="#" class="back-to-top" aria-label="ページの先頭へ戻る">
+<a href="#" class="back-to-top" aria-label="ページの先頭へ戻る">
   <img src="silver-key.png" alt="">
 </a>
 
