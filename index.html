@@ -1257,6 +1257,21 @@ body {
 
 }
 
+    /* ----------------------------------------
+   タップ・クリック時
+---------------------------------------- */
+
+.back-to-top.returning {
+  animation-play-state: paused;
+  transform: scale(1.12);
+}
+
+.back-to-top.returning img {
+  filter:
+    drop-shadow(0 0 8px rgba(240, 238, 250, 0.55))
+    drop-shadow(0 0 18px rgba(154, 117, 209, 0.4));
+}
+
 
 
     
@@ -2783,24 +2798,30 @@ document.addEventListener("DOMContentLoaded", () => {
 
   window.addEventListener("scroll", () => {
 
-    if (window.scrollY > 50) {
-      backToTop.classList.add("show");
-    } else {
-      backToTop.classList.remove("show");
-    }
+if (window.scrollY > 50) {
+  backToTop.classList.add("show");
+} else {
+  backToTop.classList.remove("show");
+}
 
   });
 
-  backToTop.addEventListener("click", (event) => {
+backToTop.addEventListener("click", (event) => {
 
-    event.preventDefault();
+  event.preventDefault();
 
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth"
-    });
+  backToTop.classList.add("returning");
 
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
   });
+
+  setTimeout(() => {
+    backToTop.classList.remove("returning");
+  }, 700);
+
+});
 
 });
 </script>
