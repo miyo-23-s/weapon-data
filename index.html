@@ -187,6 +187,9 @@
   justify-content: center;
 
   width: 100%;
+
+  /* 鍵が上下の要素に重ならないよう余白を確保 */
+  padding: 55px 0;
 }
 
 .weapon-title h1 {
@@ -205,17 +208,21 @@
   width: 216px;
   height: 216px;
 
-  left: calc(50% - 300px);
+  left: 50%;
+  top: 50%;
+
+  transform: translate(-50%, -50%);
 
   z-index: 2;
 
   object-fit: contain;
 
-  opacity: 0.9;
+  /* 透かし気味 */
+  opacity: 0.42;
 
   filter:
-    drop-shadow(0 0 5px rgba(220, 215, 235, 0.4))
-    drop-shadow(0 0 14px rgba(154, 117, 209, 0.22));
+    drop-shadow(0 0 5px rgba(220, 215, 235, 0.3))
+    drop-shadow(0 0 14px rgba(154, 117, 209, 0.16));
 
   transition:
     filter 0.3s ease,
@@ -224,13 +231,13 @@
 }
 
 .silver-key-title:hover {
-  opacity: 1;
+  opacity: 0.65;
 
   filter:
-    drop-shadow(0 0 8px rgba(240, 238, 250, 0.55))
-    drop-shadow(0 0 20px rgba(154, 117, 209, 0.4));
+    drop-shadow(0 0 8px rgba(240, 238, 250, 0.45))
+    drop-shadow(0 0 20px rgba(154, 117, 209, 0.3));
 
-  transform: scale(1.05);
+  transform: translate(-50%, -50%) scale(1.05);
 }
 
 
@@ -240,6 +247,10 @@
 
 @media (max-width: 600px) {
 
+  .weapon-title {
+    padding: 48px 0;
+  }
+
   .weapon-title h1 {
     font-size: clamp(27px, 8vw, 38px);
     letter-spacing: 0.08em;
@@ -248,8 +259,6 @@
   .silver-key-title {
     width: 104px;
     height: 104px;
-
-    left: calc(50% - 175px);
   }
 
 }
