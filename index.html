@@ -14,11 +14,17 @@
     :root {
       --bg-main: #0b0712;
       --bg-panel: #15101f;
-      --bg-panel-open: #1b1428;
+      --bg-card: #171221;
+      --bg-card-open: #20172d;
+
       --purple: #6d4aa8;
+      --purple-light: #9a75d1;
       --purple-dark: #3d2860;
+
       --silver: #c7c4d0;
+      --silver-light: #eeeeF3;
       --silver-dark: #716c7c;
+
       --text-main: #eeeeF3;
       --text-sub: #aaa5b7;
     }
@@ -27,28 +33,46 @@
       margin: 0;
       padding: 0;
       background:
-        radial-gradient(circle at 20% 10%, rgba(109, 74, 168, 0.16), transparent 28%),
-        radial-gradient(circle at 80% 70%, rgba(109, 74, 168, 0.10), transparent 30%),
+        radial-gradient(
+          circle at 20% 10%,
+          rgba(109, 74, 168, 0.16),
+          transparent 28%
+        ),
+        radial-gradient(
+          circle at 80% 70%,
+          rgba(109, 74, 168, 0.10),
+          transparent 30%
+        ),
         var(--bg-main);
+
       color: var(--text-main);
+
       font-family:
         -apple-system,
         BlinkMacSystemFont,
         "Segoe UI",
         "Noto Sans JP",
         sans-serif;
+
       line-height: 1.8;
     }
 
-    /* ページ全体 */
+    /* =========================
+       ページ全体
+    ========================= */
+
     .container {
       width: 100%;
-      max-width: 920px;
+      max-width: 1100px;
       margin: 0 auto;
       padding: 40px 18px 70px;
     }
 
-    /* 虹色の小さなアクセント */
+
+    /* =========================
+       虹色アクセント
+    ========================= */
+
     .lights {
       display: flex;
       justify-content: center;
@@ -98,7 +122,11 @@
       background: currentColor;
     }
 
-    /* ヘッダー */
+
+    /* =========================
+       ヘッダー
+    ========================= */
+
     .header {
       text-align: center;
       margin-bottom: 42px;
@@ -134,6 +162,7 @@
       max-width: 620px;
       height: 1px;
       margin: 20px auto 0;
+
       background:
         linear-gradient(
           90deg,
@@ -145,181 +174,425 @@
         );
     }
 
-    /* 資料カテゴリ */
-    details {
+
+    /* =========================
+       大カテゴリ
+    ========================= */
+
+    .category {
       position: relative;
+
       margin-bottom: 18px;
+
       border: 1px solid rgba(199, 196, 208, 0.35);
       border-radius: 8px;
+
       background:
         linear-gradient(
           135deg,
           rgba(109, 74, 168, 0.12),
           rgba(21, 16, 31, 0.96)
         );
+
       overflow: hidden;
+
       box-shadow:
         0 8px 30px rgba(0, 0, 0, 0.35),
         inset 0 1px rgba(255, 255, 255, 0.04);
     }
 
-    details::before {
+    .category::before {
       content: "";
+
       position: absolute;
+
       left: 0;
       top: 0;
       bottom: 0;
+
       width: 3px;
+
       background: var(--purple);
-      box-shadow: 0 0 12px rgba(109, 74, 168, 0.7);
+
+      box-shadow:
+        0 0 12px rgba(109, 74, 168, 0.7);
     }
 
-    summary {
+    .category > summary {
       position: relative;
+
       padding: 20px 22px 20px 28px;
+
       cursor: pointer;
       list-style: none;
+      user-select: none;
+
       color: var(--silver);
+
       font-size: clamp(18px, 5vw, 24px);
       font-weight: 600;
+
       letter-spacing: 0.08em;
-      user-select: none;
+
       transition:
         background 0.2s ease,
         color 0.2s ease;
     }
 
-    summary::-webkit-details-marker {
+    .category > summary::-webkit-details-marker {
       display: none;
     }
 
-    summary::after {
+    .category > summary::after {
       content: "+";
+
       position: absolute;
+
       right: 22px;
       top: 50%;
+
       transform: translateY(-50%);
+
       color: var(--silver-dark);
+
       font-size: 25px;
       font-weight: 300;
-      transition: transform 0.25s ease;
     }
 
-    details[open] summary {
+    .category[open] > summary {
       background: rgba(109, 74, 168, 0.14);
       color: #ffffff;
-      border-bottom: 1px solid rgba(199, 196, 208, 0.18);
+
+      border-bottom:
+        1px solid rgba(199, 196, 208, 0.18);
     }
 
-    details[open] summary::after {
+    .category[open] > summary::after {
       content: "−";
       color: var(--silver);
     }
 
-    summary:hover {
+    .category > summary:hover {
       background: rgba(109, 74, 168, 0.18);
     }
 
-    /* 虹色の小さな印 */
-    summary::before {
+    .category > summary::before {
       content: "";
+
       display: inline-block;
+
       width: 7px;
       height: 7px;
+
       margin-right: 13px;
+
       border-radius: 50%;
+
       background: #8b6cff;
-      box-shadow: 0 0 10px #8b6cff;
+
+      box-shadow:
+        0 0 10px #8b6cff;
+
       vertical-align: middle;
     }
 
-    details:nth-of-type(2) summary::before {
-      background: #52b8ff;
-      box-shadow: 0 0 10px #52b8ff;
+
+    /* =========================
+       武器カードのグリッド
+    ========================= */
+
+    .weapon-grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+      gap: 12px;
+
+      padding: 18px;
     }
 
-    details:nth-of-type(3) summary::before {
-      background: #ff4f81;
-      box-shadow: 0 0 10px #ff4f81;
-    }
 
-    /* 本文 */
-    .content {
-      padding: 24px 28px 30px;
+    /* =========================
+       個別武器カード
+    ========================= */
+
+    .weapon {
+      min-width: 0;
+
+      border:
+        1px solid rgba(199, 196, 208, 0.22);
+
+      border-radius: 7px;
+
       background:
         linear-gradient(
-          180deg,
-          rgba(255, 255, 255, 0.015),
-          transparent
+          145deg,
+          rgba(255, 255, 255, 0.025),
+          rgba(109, 74, 168, 0.06)
         );
-      color: #d8d5df;
-      font-size: clamp(15px, 4vw, 17px);
+
+      overflow: hidden;
+
+      transition:
+        border-color 0.2s ease,
+        background 0.2s ease,
+        box-shadow 0.2s ease;
     }
 
-    .content h2 {
-      margin: 0 0 12px;
-      padding-bottom: 7px;
-      border-bottom: 1px solid rgba(199, 196, 208, 0.2);
+    .weapon:hover {
+      border-color:
+        rgba(199, 196, 208, 0.42);
+
+      box-shadow:
+        0 4px 18px rgba(0, 0, 0, 0.25);
+    }
+
+    .weapon[open] {
+      border-color:
+        rgba(154, 117, 209, 0.55);
+
+      background: var(--bg-card-open);
+
+      box-shadow:
+        0 5px 22px rgba(0, 0, 0, 0.3);
+    }
+
+    .weapon > summary {
+      position: relative;
+
+      min-height: 58px;
+
+      display: flex;
+      align-items: center;
+
+      padding: 14px 38px 14px 16px;
+
+      cursor: pointer;
+      list-style: none;
+      user-select: none;
+
       color: var(--silver);
-      font-size: clamp(19px, 5vw, 25px);
-      letter-spacing: 0.05em;
+
+      font-size: 15px;
+      font-weight: 600;
+
+      letter-spacing: 0.04em;
     }
 
-    .content h3 {
+    .weapon > summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .weapon > summary::before {
+      content: "";
+
+      width: 6px;
+      height: 6px;
+
+      flex: 0 0 auto;
+
+      margin-right: 10px;
+
+      border-radius: 50%;
+
+      background: var(--purple-light);
+
+      box-shadow:
+        0 0 8px var(--purple-light);
+    }
+
+    .weapon > summary::after {
+      content: "+";
+
+      position: absolute;
+
+      right: 13px;
+      top: 50%;
+
+      transform: translateY(-50%);
+
+      color: var(--silver-dark);
+
+      font-size: 19px;
+      font-weight: 300;
+    }
+
+    .weapon[open] > summary {
       color: #ffffff;
-      font-size: clamp(17px, 4.5vw, 21px);
+
+      background:
+        rgba(109, 74, 168, 0.14);
+
+      border-bottom:
+        1px solid rgba(199, 196, 208, 0.15);
     }
 
-    .content p {
-      margin: 10px 0;
+    .weapon[open] > summary::after {
+      content: "−";
+      color: var(--silver);
     }
 
-    .content ul,
-    .content ol {
-      padding-left: 1.5em;
+
+    /* =========================
+       武器詳細
+    ========================= */
+
+    .weapon-info {
+      padding: 14px 16px 16px;
+
+      font-size: 14px;
     }
 
-    /* フッター */
+    .stat {
+      display: grid;
+
+      grid-template-columns:
+        92px minmax(0, 1fr);
+
+      gap: 8px;
+
+      padding: 7px 0;
+
+      border-bottom:
+        1px solid rgba(199, 196, 208, 0.10);
+    }
+
+    .stat:last-child {
+      border-bottom: none;
+    }
+
+    .stat-label {
+      color: var(--silver-dark);
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .stat-value {
+      color: #e2dfe8;
+      word-break: break-word;
+    }
+
+
+    /* =========================
+       特殊データ
+    ========================= */
+
+    .sub-section {
+      margin-top: 10px;
+      margin-bottom: 12px;
+
+      padding:
+        8px 10px;
+
+      border-left:
+        2px solid var(--purple);
+
+      background:
+        rgba(109, 74, 168, 0.08);
+
+      color: var(--silver);
+
+      font-size: 12px;
+      font-weight: 600;
+
+      letter-spacing: 0.04em;
+    }
+
+
+    /* =========================
+       フッター
+    ========================= */
+
     .footer {
       margin-top: 42px;
+
       text-align: center;
+
       color: #625d6d;
+
       font-size: 11px;
+
       letter-spacing: 0.12em;
     }
 
-    /* スマホ */
+
+    /* =========================
+       タブレット
+    ========================= */
+
+    @media (max-width: 850px) {
+
+      .weapon-grid {
+        grid-template-columns:
+          repeat(2, minmax(0, 1fr));
+      }
+
+    }
+
+
+    /* =========================
+       スマートフォン
+    ========================= */
+
     @media (max-width: 600px) {
+
       .container {
-        padding: 28px 10px 50px;
+        padding:
+          28px 10px 50px;
       }
 
       .header {
         margin-bottom: 30px;
       }
 
-      summary {
-        padding: 18px 42px 18px 20px;
+      .category > summary {
+        padding:
+          18px 42px 18px 20px;
       }
 
-      summary::after {
+      .category > summary::after {
         right: 17px;
       }
 
-      summary::before {
-        margin-right: 9px;
+      .weapon-grid {
+        grid-template-columns: 1fr;
+
+        gap: 9px;
+
+        padding: 12px;
       }
 
-      .content {
-        padding: 20px 18px 24px;
+      .weapon > summary {
+        min-height: 54px;
+
+        padding:
+          14px 38px 14px 15px;
       }
+
+      .weapon-info {
+        padding:
+          12px 15px 15px;
+      }
+
+      .stat {
+        grid-template-columns:
+          82px minmax(0, 1fr);
+      }
+
     }
+
   </style>
 </head>
+
 
 <body>
 
   <div class="container">
+
+    <!-- =========================
+         ヘッダー
+    ========================== -->
 
     <header class="header">
 
@@ -348,70 +621,545 @@
     </header>
 
 
-    <!-- 近接武器 -->
-    <details>
+    <!-- =========================
+         近接武器
+    ========================== -->
+
+    <details class="category">
 
       <summary>近接武器</summary>
 
-      <div class="content">
 
-        <h2>近接武器資料</h2>
+      <div class="weapon-grid">
 
-        <p>
-          ここに近接武器の資料が入ります。
-        </p>
 
-        <h3>テスト見出し</h3>
+        <!-- サーベル -->
 
-        <p>
-          長い文章をここに入れることができます。<br>
-          本文の量が増えても、スマートフォンでは画面幅に合わせて自動的に折り返されます。
-        </p>
+        <details class="weapon">
+
+          <summary>サーベル</summary>
+
+          <div class="weapon-info">
+
+            <div class="stat">
+              <div class="stat-label">命中率</div>
+              <div class="stat-value">15</div>
+            </div>
+
+            <div class="stat">
+              <div class="stat-label">ダメージ</div>
+              <div class="stat-value">1d6+DB</div>
+            </div>
+
+            <div class="stat">
+              <div class="stat-label">耐久力</div>
+              <div class="stat-value">20</div>
+            </div>
+
+          </div>
+
+        </details>
+
+
+        <!-- ナイフ -->
+
+        <details class="weapon">
+
+          <summary>ナイフ</summary>
+
+          <div class="weapon-info">
+
+            <div class="stat">
+              <div class="stat-label">命中率</div>
+              <div class="stat-value">25</div>
+            </div>
+
+            <div class="stat">
+              <div class="stat-label">ダメージ</div>
+              <div class="stat-value">1d4+DB</div>
+            </div>
+
+            <div class="stat">
+              <div class="stat-label">耐久力</div>
+              <div class="stat-value">9</div>
+            </div>
+
+          </div>
+
+        </details>
+
+
+        <!-- ドライバー -->
+
+        <details class="weapon">
+
+          <summary>ドライバー</summary>
+
+          <div class="weapon-info">
+
+            <div class="stat">
+              <div class="stat-label">命中率</div>
+              <div class="stat-value">〈ナイフ〉</div>
+            </div>
+
+            <div class="stat">
+              <div class="stat-label">ダメージ</div>
+              <div class="stat-value">1d2+DB（貫通）</div>
+            </div>
+
+            <div class="stat">
+              <div class="stat-label">耐久力</div>
+              <div class="stat-value">5</div>
+            </div>
+
+          </div>
+
+        </details>
+
+
+        <!-- はさみ -->
+
+        <details class="weapon">
+
+          <summary>はさみ</summary>
+
+          <div class="weapon-info">
+
+            <div class="stat">
+              <div class="stat-label">命中率</div>
+              <div class="stat-value">〈ナイフ〉</div>
+            </div>
+
+            <div class="stat">
+              <div class="stat-label">ダメージ</div>
+              <div class="stat-value">1d3+DB（貫通）</div>
+            </div>
+
+            <div class="stat">
+              <div class="stat-label">耐久力</div>
+              <div class="stat-value">5</div>
+            </div>
+
+          </div>
+
+        </details>
+
+
+        <!-- 木斧 -->
+
+        <details class="weapon">
+
+          <summary>木斧</summary>
+
+          <div class="weapon-info">
+
+            <div class="stat">
+              <div class="stat-label">命中率</div>
+              <div class="stat-value">20</div>
+            </div>
+
+            <div class="stat">
+              <div class="stat-label">ダメージ</div>
+              <div class="stat-value">1d8+2+DB</div>
+            </div>
+
+            <div class="stat">
+              <div class="stat-label">耐久力</div>
+              <div class="stat-value">15</div>
+            </div>
+
+          </div>
+
+        </details>
+
+
+        <!-- 警棒 -->
+
+        <details class="weapon">
+
+          <summary>警棒</summary>
+
+          <div class="weapon-info">
+
+            <div class="stat">
+              <div class="stat-label">命中率</div>
+              <div class="stat-value">〈杖〉</div>
+            </div>
+
+            <div class="stat">
+              <div class="stat-label">ダメージ</div>
+              <div class="stat-value">1d6+DB</div>
+            </div>
+
+            <div class="stat">
+              <div class="stat-label">耐久力</div>
+              <div class="stat-value">15</div>
+            </div>
+
+          </div>
+
+        </details>
+
+
+        <!-- ハンマー -->
+
+        <details class="weapon">
+
+          <summary>ハンマー</summary>
+
+          <div class="weapon-info">
+
+            <div class="stat">
+              <div class="stat-label">命中率</div>
+              <div class="stat-value">〈杖〉</div>
+            </div>
+
+            <div class="stat">
+              <div class="stat-label">ダメージ</div>
+              <div class="stat-value">1d4+1+DB</div>
+            </div>
+
+            <div class="stat">
+              <div class="stat-label">耐久力</div>
+              <div class="stat-value">10</div>
+            </div>
+
+          </div>
+
+        </details>
+
+
+        <!-- フライパン -->
+
+        <details class="weapon">
+
+          <summary>フライパン</summary>
+
+          <div class="weapon-info">
+
+            <div class="stat">
+              <div class="stat-label">命中率</div>
+              <div class="stat-value">〈杖〉</div>
+            </div>
+
+            <div class="stat">
+              <div class="stat-label">ダメージ</div>
+              <div class="stat-value">1d3+DB</div>
+            </div>
+
+            <div class="stat">
+              <div class="stat-label">耐久力</div>
+              <div class="stat-value">8</div>
+            </div>
+
+          </div>
+
+        </details>
+
+
+        <!-- ガラス瓶 -->
+
+        <details class="weapon">
+
+          <summary>ガラス瓶</summary>
+
+          <div class="weapon-info">
+
+            <div class="sub-section">
+              割れていないもの
+            </div>
+
+            <div class="stat">
+              <div class="stat-label">命中率</div>
+              <div class="stat-value">〈杖〉</div>
+            </div>
+
+            <div class="stat">
+              <div class="stat-label">ダメージ</div>
+              <div class="stat-value">1d3</div>
+            </div>
+
+
+            <div class="sub-section">
+              割れているもの
+            </div>
+
+            <div class="stat">
+              <div class="stat-label">命中率</div>
+              <div class="stat-value">〈ナイフ〉</div>
+            </div>
+
+            <div class="stat">
+              <div class="stat-label">ダメージ</div>
+              <div class="stat-value">1d4（貫通）</div>
+            </div>
+
+
+            <div class="stat">
+              <div class="stat-label">耐久力</div>
+              <div class="stat-value">1</div>
+            </div>
+
+          </div>
+
+        </details>
+
+
+        <!-- 槍 -->
+
+        <details class="weapon">
+
+          <summary>槍</summary>
+
+          <div class="weapon-info">
+
+            <div class="stat">
+              <div class="stat-label">命中率</div>
+              <div class="stat-value">15</div>
+            </div>
+
+            <div class="stat">
+              <div class="stat-label">ダメージ</div>
+              <div class="stat-value">1d10+DB</div>
+            </div>
+
+            <div class="stat">
+              <div class="stat-label">耐久力</div>
+              <div class="stat-value">15</div>
+            </div>
+
+          </div>
+
+        </details>
+
+
+        <!-- 日本刀 -->
+
+        <details class="weapon">
+
+          <summary>日本刀</summary>
+
+          <div class="weapon-info">
+
+            <div class="stat">
+              <div class="stat-label">命中率</div>
+              <div class="stat-value">15</div>
+            </div>
+
+
+            <div class="sub-section">
+              打刀／小太刀
+            </div>
+
+            <div class="stat">
+              <div class="stat-label">ダメージ</div>
+              <div class="stat-value">1d10+DB</div>
+            </div>
+
+            <div class="stat">
+              <div class="stat-label">耐久力</div>
+              <div class="stat-value">20</div>
+            </div>
+
+
+            <div class="sub-section">
+              脇差
+            </div>
+
+            <div class="stat">
+              <div class="stat-label">ダメージ</div>
+              <div class="stat-value">1d6+DB</div>
+            </div>
+
+            <div class="stat">
+              <div class="stat-label">耐久力</div>
+              <div class="stat-value">15</div>
+            </div>
+
+          </div>
+
+        </details>
+
+
+        <!-- 太刀 -->
+
+        <details class="weapon">
+
+          <summary>太刀</summary>
+
+          <div class="weapon-info">
+
+            <div class="stat">
+              <div class="stat-label">命中率</div>
+              <div class="stat-value">5</div>
+            </div>
+
+            <div class="stat">
+              <div class="stat-label">ダメージ</div>
+              <div class="stat-value">2d8+DB</div>
+            </div>
+
+            <div class="stat">
+              <div class="stat-label">耐久力</div>
+              <div class="stat-value">30</div>
+            </div>
+
+          </div>
+
+        </details>
+
+
+        <!-- 薙刀 -->
+
+        <details class="weapon">
+
+          <summary>薙刀</summary>
+
+          <div class="weapon-info">
+
+            <div class="stat">
+              <div class="stat-label">命中率</div>
+              <div class="stat-value">15</div>
+            </div>
+
+            <div class="stat">
+              <div class="stat-label">ダメージ</div>
+              <div class="stat-value">1d8+DB</div>
+            </div>
+
+            <div class="stat">
+              <div class="stat-label">耐久力</div>
+              <div class="stat-value">15</div>
+            </div>
+
+          </div>
+
+        </details>
+
+
+        <!-- 大鎌 -->
+
+        <details class="weapon">
+
+          <summary>大鎌</summary>
+
+          <div class="weapon-info">
+
+            <div class="stat">
+              <div class="stat-label">命中率</div>
+              <div class="stat-value">10</div>
+            </div>
+
+            <div class="stat">
+              <div class="stat-label">ダメージ</div>
+              <div class="stat-value">1d8+1+DB</div>
+            </div>
+
+            <div class="stat">
+              <div class="stat-label">耐久力</div>
+              <div class="stat-value">30</div>
+            </div>
+
+          </div>
+
+        </details>
+
+
+        <!-- 絞殺 -->
+
+        <details class="weapon">
+
+          <summary>絞殺（ロープ）</summary>
+
+          <div class="weapon-info">
+
+            <div class="stat">
+              <div class="stat-label">命中率</div>
+              <div class="stat-value">15</div>
+            </div>
+
+            <div class="stat">
+              <div class="stat-label">ダメージ</div>
+              <div class="stat-value">窒息</div>
+            </div>
+
+            <div class="stat">
+              <div class="stat-label">耐久力</div>
+              <div class="stat-value">1</div>
+            </div>
+
+          </div>
+
+        </details>
+
+
+        <!-- スタンガン -->
+
+        <details class="weapon">
+
+          <summary>スタンガン</summary>
+
+          <div class="weapon-info">
+
+            <div class="stat">
+              <div class="stat-label">命中率</div>
+              <div class="stat-value">〈こぶし〉</div>
+            </div>
+
+            <div class="stat">
+              <div class="stat-label">ダメージ</div>
+              <div class="stat-value">スタン</div>
+            </div>
+
+            <div class="stat">
+              <div class="stat-label">故障ナンバー</div>
+              <div class="stat-value">97</div>
+            </div>
+
+            <div class="stat">
+              <div class="stat-label">耐久力</div>
+              <div class="stat-value">7</div>
+            </div>
+
+          </div>
+
+        </details>
+
+
+        <!-- ムチ -->
+
+        <details class="weapon">
+
+          <summary>ムチ</summary>
+
+          <div class="weapon-info">
+
+            <div class="stat">
+              <div class="stat-label">命中率</div>
+              <div class="stat-value">5</div>
+            </div>
+
+            <div class="stat">
+              <div class="stat-label">ダメージ</div>
+              <div class="stat-value">1d3</div>
+            </div>
+
+            <div class="stat">
+              <div class="stat-label">耐久力</div>
+              <div class="stat-value">4</div>
+            </div>
+
+          </div>
+
+        </details>
+
 
       </div>
 
     </details>
 
 
-    <!-- 遠隔武器 -->
-    <details>
-
-      <summary>遠隔武器</summary>
-
-      <div class="content">
-
-        <h2>遠隔武器資料</h2>
-
-        <p>
-          ここに遠隔武器の資料が入ります。
-        </p>
-
-        <p>
-          この部分にも長い資料を追加できます。
-        </p>
-
-      </div>
-
-    </details>
-
-
-    <!-- 爆発物・重火器 -->
-    <details>
-
-      <summary>爆発物・重火器</summary>
-
-      <div class="content">
-
-        <h2>爆発物・重火器資料</h2>
-
-        <p>
-          ここに爆発物・重火器の資料が入ります。
-        </p>
-
-      </div>
-
-    </details>
-
+    <!-- フッター -->
 
     <footer class="footer">
       WEAPON DATABASE / INFORMATION ARCHIVE
