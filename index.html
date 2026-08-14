@@ -2,26 +2,147 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>武器資料テスト</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>武器資料</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 24px 16px 48px;
+      background: #111;
+      color: #eee;
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        "Noto Sans JP",
+        sans-serif;
+      line-height: 1.8;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      margin: 0 0 32px;
+      text-align: center;
+      font-size: clamp(28px, 7vw, 42px);
+      letter-spacing: 0.15em;
+    }
+
+    details {
+      margin-bottom: 16px;
+      border: 1px solid #444;
+      border-radius: 10px;
+      background: #1b1b1b;
+      overflow: hidden;
+    }
+
+    summary {
+      padding: 18px 20px;
+      cursor: pointer;
+      font-size: clamp(18px, 5vw, 24px);
+      font-weight: bold;
+      user-select: none;
+    }
+
+    summary:hover {
+      background: #252525;
+    }
+
+    .content {
+      padding: 4px 20px 24px;
+      border-top: 1px solid #333;
+      font-size: clamp(15px, 4vw, 17px);
+    }
+
+    .content h2 {
+      margin-top: 24px;
+      font-size: clamp(19px, 5vw, 25px);
+    }
+
+    .content h3 {
+      margin-top: 20px;
+      font-size: clamp(17px, 4.5vw, 21px);
+    }
+
+    .content p {
+      margin: 10px 0;
+    }
+
+    .content ul,
+    .content ol {
+      padding-left: 1.5em;
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding: 16px 10px 36px;
+      }
+
+      summary {
+        padding: 16px;
+      }
+
+      .content {
+        padding: 2px 16px 20px;
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-<h1>武器資料</h1>
+  <div class="container">
 
-<details>
-  <summary>近接武器</summary>
-  <p>ここに近接武器の資料が入ります。</p>
-</details>
+    <h1>武器資料</h1>
 
-<details>
-  <summary>遠隔武器</summary>
-  <p>ここに遠隔武器の資料が入ります。</p>
-</details>
+    <details>
+      <summary>近接武器</summary>
 
-<details>
-  <summary>爆発物・重火器</summary>
-  <p>ここに爆発物・重火器の資料が入ります。</p>
-</details>
+      <div class="content">
+        <p>
+          ここに近接武器の資料が入ります。
+        </p>
+
+        <h2>テスト見出し</h2>
+
+        <p>
+          長い文章をここに入れることができます。<br>
+          太字や見出しなどもHTMLで自由に設定できます。
+        </p>
+      </div>
+    </details>
+
+    <details>
+      <summary>遠隔武器</summary>
+
+      <div class="content">
+        <p>
+          ここに遠隔武器の資料が入ります。
+        </p>
+      </div>
+    </details>
+
+    <details>
+      <summary>爆発物・重火器</summary>
+
+      <div class="content">
+        <p>
+          ここに爆発物・重火器の資料が入ります。
+        </p>
+      </div>
+    </details>
+
+  </div>
 
 </body>
 </html>
