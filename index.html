@@ -585,6 +585,45 @@
 
     }
 
+    .copy-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 12px;
+}
+
+.copy-btn {
+  border: 1px solid rgba(154, 117, 209, 0.45);
+  border-radius: 5px;
+  padding: 6px 9px;
+
+  background: rgba(109, 74, 168, 0.12);
+  color: var(--silver);
+
+  font-size: 11px;
+  font-family: inherit;
+  letter-spacing: 0.02em;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.copy-btn:hover {
+  background: rgba(109, 74, 168, 0.28);
+  border-color: var(--purple-light);
+  color: #ffffff;
+}
+
+.copy-btn.copied {
+  background: rgba(80, 180, 120, 0.14);
+  border-color: rgba(100, 210, 150, 0.55);
+  color: #b8f0cc;
+}
+
   </style>
 </head>
 
@@ -635,524 +674,716 @@
 
       <div class="weapon-grid">
 
+        
 
-        <!-- サーベル -->
+<!-- サーベル -->
+<details class="weapon">
 
-        <details class="weapon">
+  <summary>サーベル</summary>
 
-          <summary>サーベル</summary>
+  <div class="weapon-info">
 
-          <div class="weapon-info">
+    <div class="stat">
+      <div class="stat-label">命中率</div>
+      <div class="stat-value">15</div>
+    </div>
 
-            <div class="stat">
-              <div class="stat-label">命中率</div>
-              <div class="stat-value">15</div>
-            </div>
+    <div class="copy-buttons">
+      <button class="copy-btn" onclick="copyWeaponCommand(this, 'CCB&lt;=15')">
+        🎲 命中率をコピー
+      </button>
+    </div>
 
-            <div class="stat">
-              <div class="stat-label">ダメージ</div>
-              <div class="stat-value">1d6+DB</div>
-            </div>
+    <div class="stat">
+      <div class="stat-label">ダメージ</div>
+      <div class="stat-value">1d6+DB</div>
+    </div>
 
-            <div class="stat">
-              <div class="stat-label">耐久力</div>
-              <div class="stat-value">20</div>
-            </div>
+    <div class="copy-buttons">
+      <button class="copy-btn" onclick="copyWeaponCommand(this, '1d6+DB')">
+        🎲 ダメージをコピー
+      </button>
+    </div>
 
-          </div>
+    <div class="stat">
+      <div class="stat-label">耐久力</div>
+      <div class="stat-value">20</div>
+    </div>
 
-        </details>
-
-
-        <!-- ナイフ -->
-
-        <details class="weapon">
-
-          <summary>ナイフ</summary>
-
-          <div class="weapon-info">
-
-            <div class="stat">
-              <div class="stat-label">命中率</div>
-              <div class="stat-value">25</div>
-            </div>
-
-            <div class="stat">
-              <div class="stat-label">ダメージ</div>
-              <div class="stat-value">1d4+DB</div>
-            </div>
-
-            <div class="stat">
-              <div class="stat-label">耐久力</div>
-              <div class="stat-value">9</div>
-            </div>
-
-          </div>
-
-        </details>
-
-
-        <!-- ドライバー -->
-
-        <details class="weapon">
-
-          <summary>ドライバー</summary>
-
-          <div class="weapon-info">
-
-            <div class="stat">
-              <div class="stat-label">命中率</div>
-              <div class="stat-value">〈ナイフ〉</div>
-            </div>
-
-            <div class="stat">
-              <div class="stat-label">ダメージ</div>
-              <div class="stat-value">1d2+DB（貫通）</div>
-            </div>
-
-            <div class="stat">
-              <div class="stat-label">耐久力</div>
-              <div class="stat-value">5</div>
-            </div>
-
-          </div>
-
-        </details>
-
-
-        <!-- はさみ -->
-
-        <details class="weapon">
-
-          <summary>はさみ</summary>
-
-          <div class="weapon-info">
-
-            <div class="stat">
-              <div class="stat-label">命中率</div>
-              <div class="stat-value">〈ナイフ〉</div>
-            </div>
-
-            <div class="stat">
-              <div class="stat-label">ダメージ</div>
-              <div class="stat-value">1d3+DB（貫通）</div>
-            </div>
-
-            <div class="stat">
-              <div class="stat-label">耐久力</div>
-              <div class="stat-value">5</div>
-            </div>
-
-          </div>
-
-        </details>
-
-
-        <!-- 木斧 -->
-
-        <details class="weapon">
-
-          <summary>木斧</summary>
-
-          <div class="weapon-info">
-
-            <div class="stat">
-              <div class="stat-label">命中率</div>
-              <div class="stat-value">20</div>
-            </div>
-
-            <div class="stat">
-              <div class="stat-label">ダメージ</div>
-              <div class="stat-value">1d8+2+DB</div>
-            </div>
-
-            <div class="stat">
-              <div class="stat-label">耐久力</div>
-              <div class="stat-value">15</div>
-            </div>
-
-          </div>
-
-        </details>
-
-
-        <!-- 警棒 -->
-
-        <details class="weapon">
-
-          <summary>警棒</summary>
-
-          <div class="weapon-info">
-
-            <div class="stat">
-              <div class="stat-label">命中率</div>
-              <div class="stat-value">〈杖〉</div>
-            </div>
-
-            <div class="stat">
-              <div class="stat-label">ダメージ</div>
-              <div class="stat-value">1d6+DB</div>
-            </div>
-
-            <div class="stat">
-              <div class="stat-label">耐久力</div>
-              <div class="stat-value">15</div>
-            </div>
-
-          </div>
-
-        </details>
-
-
-        <!-- ハンマー -->
-
-        <details class="weapon">
-
-          <summary>ハンマー</summary>
-
-          <div class="weapon-info">
-
-            <div class="stat">
-              <div class="stat-label">命中率</div>
-              <div class="stat-value">〈杖〉</div>
-            </div>
-
-            <div class="stat">
-              <div class="stat-label">ダメージ</div>
-              <div class="stat-value">1d4+1+DB</div>
-            </div>
-
-            <div class="stat">
-              <div class="stat-label">耐久力</div>
-              <div class="stat-value">10</div>
-            </div>
-
-          </div>
-
-        </details>
-
-
-        <!-- フライパン -->
-
-        <details class="weapon">
-
-          <summary>フライパン</summary>
-
-          <div class="weapon-info">
-
-            <div class="stat">
-              <div class="stat-label">命中率</div>
-              <div class="stat-value">〈杖〉</div>
-            </div>
-
-            <div class="stat">
-              <div class="stat-label">ダメージ</div>
-              <div class="stat-value">1d3+DB</div>
-            </div>
-
-            <div class="stat">
-              <div class="stat-label">耐久力</div>
-              <div class="stat-value">8</div>
-            </div>
-
-          </div>
-
-        </details>
-
-
-        <!-- ガラス瓶 -->
-
-        <details class="weapon">
-
-          <summary>ガラス瓶</summary>
-
-<div class="weapon-info">
-
-  <div class="stat">
-    <div class="stat-label">耐久力</div>
-    <div class="stat-value">1</div>
   </div>
 
-  <div class="sub-section">
-    割れていないもの
+</details>
+
+
+<!-- ナイフ -->
+<details class="weapon">
+
+  <summary>ナイフ</summary>
+
+  <div class="weapon-info">
+
+    <div class="stat">
+      <div class="stat-label">命中率</div>
+      <div class="stat-value">25</div>
+    </div>
+
+    <div class="copy-buttons">
+      <button class="copy-btn" onclick="copyWeaponCommand(this, 'CCB&lt;=25')">
+        🎲 命中率をコピー
+      </button>
+    </div>
+
+    <div class="stat">
+      <div class="stat-label">ダメージ</div>
+      <div class="stat-value">1d4+DB</div>
+    </div>
+
+    <div class="copy-buttons">
+      <button class="copy-btn" onclick="copyWeaponCommand(this, '1d4+DB')">
+        🎲 ダメージをコピー
+      </button>
+    </div>
+
+    <div class="stat">
+      <div class="stat-label">耐久力</div>
+      <div class="stat-value">9</div>
+    </div>
+
   </div>
 
-  <div class="stat">
-    <div class="stat-label">命中率</div>
-    <div class="stat-value">〈杖〉</div>
+</details>
+
+
+<!-- ドライバー -->
+<details class="weapon">
+
+  <summary>ドライバー</summary>
+
+  <div class="weapon-info">
+
+    <div class="stat">
+      <div class="stat-label">命中率</div>
+      <div class="stat-value">〈ナイフ〉</div>
+    </div>
+
+    <div class="copy-buttons">
+      <button class="copy-btn" onclick="copyWeaponCommand(this, '【ナイフ】')">
+        🎲 命中率をコピー
+      </button>
+    </div>
+
+    <div class="stat">
+      <div class="stat-label">ダメージ</div>
+      <div class="stat-value">1d2+DB（貫通）</div>
+    </div>
+
+    <div class="copy-buttons">
+      <button class="copy-btn" onclick="copyWeaponCommand(this, '1d2+DB')">
+        🎲 ダメージをコピー
+      </button>
+    </div>
+
+    <div class="stat">
+      <div class="stat-label">耐久力</div>
+      <div class="stat-value">5</div>
+    </div>
+
   </div>
 
-  <div class="stat">
-    <div class="stat-label">ダメージ</div>
-    <div class="stat-value">1d3</div>
+</details>
+
+
+<!-- はさみ -->
+<details class="weapon">
+
+  <summary>はさみ</summary>
+
+  <div class="weapon-info">
+
+    <div class="stat">
+      <div class="stat-label">命中率</div>
+      <div class="stat-value">〈ナイフ〉</div>
+    </div>
+
+    <div class="copy-buttons">
+      <button class="copy-btn" onclick="copyWeaponCommand(this, '【ナイフ】')">
+        🎲 命中率をコピー
+      </button>
+    </div>
+
+    <div class="stat">
+      <div class="stat-label">ダメージ</div>
+      <div class="stat-value">1d3+DB（貫通）</div>
+    </div>
+
+    <div class="copy-buttons">
+      <button class="copy-btn" onclick="copyWeaponCommand(this, '1d3+DB')">
+        🎲 ダメージをコピー
+      </button>
+    </div>
+
+    <div class="stat">
+      <div class="stat-label">耐久力</div>
+      <div class="stat-value">5</div>
+    </div>
+
   </div>
 
-  <div class="sub-section">
-    割れているもの
+</details>
+
+
+<!-- 木斧 -->
+<details class="weapon">
+
+  <summary>木斧</summary>
+
+  <div class="weapon-info">
+
+    <div class="stat">
+      <div class="stat-label">命中率</div>
+      <div class="stat-value">20</div>
+    </div>
+
+    <div class="copy-buttons">
+      <button class="copy-btn" onclick="copyWeaponCommand(this, 'CCB&lt;=20')">
+        🎲 命中率をコピー
+      </button>
+    </div>
+
+    <div class="stat">
+      <div class="stat-label">ダメージ</div>
+      <div class="stat-value">1d8+2+DB</div>
+    </div>
+
+    <div class="copy-buttons">
+      <button class="copy-btn" onclick="copyWeaponCommand(this, '1d8+2+DB')">
+        🎲 ダメージをコピー
+      </button>
+    </div>
+
+    <div class="stat">
+      <div class="stat-label">耐久力</div>
+      <div class="stat-value">15</div>
+    </div>
+
   </div>
 
-  <div class="stat">
-    <div class="stat-label">命中率</div>
-    <div class="stat-value">〈ナイフ〉</div>
+</details>
+
+
+<!-- 警棒 -->
+<details class="weapon">
+
+  <summary>警棒</summary>
+
+  <div class="weapon-info">
+
+    <div class="stat">
+      <div class="stat-label">命中率</div>
+      <div class="stat-value">〈杖〉</div>
+    </div>
+
+    <div class="copy-buttons">
+      <button class="copy-btn" onclick="copyWeaponCommand(this, '【杖】')">
+        🎲 命中率をコピー
+      </button>
+    </div>
+
+    <div class="stat">
+      <div class="stat-label">ダメージ</div>
+      <div class="stat-value">1d6+DB</div>
+    </div>
+
+    <div class="copy-buttons">
+      <button class="copy-btn" onclick="copyWeaponCommand(this, '1d6+DB')">
+        🎲 ダメージをコピー
+      </button>
+    </div>
+
+    <div class="stat">
+      <div class="stat-label">耐久力</div>
+      <div class="stat-value">15</div>
+    </div>
+
   </div>
 
-  <div class="stat">
-    <div class="stat-label">ダメージ</div>
-    <div class="stat-value">1d4（貫通）</div>
+</details>
+
+
+<!-- ハンマー -->
+<details class="weapon">
+
+  <summary>ハンマー</summary>
+
+  <div class="weapon-info">
+
+    <div class="stat">
+      <div class="stat-label">命中率</div>
+      <div class="stat-value">〈杖〉</div>
+    </div>
+
+    <div class="copy-buttons">
+      <button class="copy-btn" onclick="copyWeaponCommand(this, '【杖】')">
+        🎲 命中率をコピー
+      </button>
+    </div>
+
+    <div class="stat">
+      <div class="stat-label">ダメージ</div>
+      <div class="stat-value">1d4+1+DB</div>
+    </div>
+
+    <div class="copy-buttons">
+      <button class="copy-btn" onclick="copyWeaponCommand(this, '1d4+1+DB')">
+        🎲 ダメージをコピー
+      </button>
+    </div>
+
+    <div class="stat">
+      <div class="stat-label">耐久力</div>
+      <div class="stat-value">10</div>
+    </div>
+
   </div>
 
-</div>
+</details>
 
-        </details>
 
+<!-- フライパン -->
+<details class="weapon">
+
+  <summary>フライパン</summary>
 
-        <!-- 槍 -->
+  <div class="weapon-info">
 
-        <details class="weapon">
+    <div class="stat">
+      <div class="stat-label">命中率</div>
+      <div class="stat-value">〈杖〉</div>
+    </div>
 
-          <summary>槍</summary>
+    <div class="copy-buttons">
+      <button class="copy-btn" onclick="copyWeaponCommand(this, '【杖】')">
+        🎲 命中率をコピー
+      </button>
+    </div>
 
-          <div class="weapon-info">
+    <div class="stat">
+      <div class="stat-label">ダメージ</div>
+      <div class="stat-value">1d3+DB</div>
+    </div>
 
-            <div class="stat">
-              <div class="stat-label">命中率</div>
-              <div class="stat-value">15</div>
-            </div>
+    <div class="copy-buttons">
+      <button class="copy-btn" onclick="copyWeaponCommand(this, '1d3+DB')">
+        🎲 ダメージをコピー
+      </button>
+    </div>
 
-            <div class="stat">
-              <div class="stat-label">ダメージ</div>
-              <div class="stat-value">1d10+DB</div>
-            </div>
+    <div class="stat">
+      <div class="stat-label">耐久力</div>
+      <div class="stat-value">8</div>
+    </div>
 
-            <div class="stat">
-              <div class="stat-label">耐久力</div>
-              <div class="stat-value">15</div>
-            </div>
+  </div>
 
-          </div>
+</details>
 
-        </details>
 
+<!-- ガラス瓶 -->
+<details class="weapon">
 
-        <!-- 日本刀 -->
+  <summary>ガラス瓶</summary>
 
-        <details class="weapon">
+  <div class="weapon-info">
 
-          <summary>日本刀</summary>
+    <div class="stat">
+      <div class="stat-label">耐久力</div>
+      <div class="stat-value">1</div>
+    </div>
 
-          <div class="weapon-info">
+    <div class="sub-section">
+      割れていないもの
+    </div>
 
-            <div class="stat">
-              <div class="stat-label">命中率</div>
-              <div class="stat-value">15</div>
-            </div>
+    <div class="stat">
+      <div class="stat-label">命中率</div>
+      <div class="stat-value">〈杖〉</div>
+    </div>
 
+    <div class="copy-buttons">
+      <button class="copy-btn" onclick="copyWeaponCommand(this, '【杖】')">
+        🎲 命中率をコピー
+      </button>
+    </div>
 
-            <div class="sub-section">
-              打刀／小太刀
-            </div>
+    <div class="stat">
+      <div class="stat-label">ダメージ</div>
+      <div class="stat-value">1d3</div>
+    </div>
 
-            <div class="stat">
-              <div class="stat-label">ダメージ</div>
-              <div class="stat-value">1d10+DB</div>
-            </div>
+    <div class="copy-buttons">
+      <button class="copy-btn" onclick="copyWeaponCommand(this, '1d3')">
+        🎲 ダメージをコピー
+      </button>
+    </div>
 
-            <div class="stat">
-              <div class="stat-label">耐久力</div>
-              <div class="stat-value">20</div>
-            </div>
+    <div class="sub-section">
+      割れているもの
+    </div>
 
+    <div class="stat">
+      <div class="stat-label">命中率</div>
+      <div class="stat-value">〈ナイフ〉</div>
+    </div>
 
-            <div class="sub-section">
-              脇差
-            </div>
+    <div class="copy-buttons">
+      <button class="copy-btn" onclick="copyWeaponCommand(this, '【ナイフ】')">
+        🎲 命中率をコピー
+      </button>
+    </div>
 
-            <div class="stat">
-              <div class="stat-label">ダメージ</div>
-              <div class="stat-value">1d6+DB</div>
-            </div>
+    <div class="stat">
+      <div class="stat-label">ダメージ</div>
+      <div class="stat-value">1d4（貫通）</div>
+    </div>
 
-            <div class="stat">
-              <div class="stat-label">耐久力</div>
-              <div class="stat-value">15</div>
-            </div>
+    <div class="copy-buttons">
+      <button class="copy-btn" onclick="copyWeaponCommand(this, '1d4')">
+        🎲 ダメージをコピー
+      </button>
+    </div>
 
-          </div>
+  </div>
 
-        </details>
+</details>
 
 
-        <!-- 太刀 -->
+<!-- 槍 -->
+<details class="weapon">
 
-        <details class="weapon">
+  <summary>槍</summary>
 
-          <summary>太刀</summary>
+  <div class="weapon-info">
 
-          <div class="weapon-info">
+    <div class="stat">
+      <div class="stat-label">命中率</div>
+      <div class="stat-value">15</div>
+    </div>
 
-            <div class="stat">
-              <div class="stat-label">命中率</div>
-              <div class="stat-value">5</div>
-            </div>
+    <div class="copy-buttons">
+      <button class="copy-btn" onclick="copyWeaponCommand(this, 'CCB&lt;=15')">
+        🎲 命中率をコピー
+      </button>
+    </div>
 
-            <div class="stat">
-              <div class="stat-label">ダメージ</div>
-              <div class="stat-value">2d8+DB</div>
-            </div>
+    <div class="stat">
+      <div class="stat-label">ダメージ</div>
+      <div class="stat-value">1d10+DB</div>
+    </div>
 
-            <div class="stat">
-              <div class="stat-label">耐久力</div>
-              <div class="stat-value">30</div>
-            </div>
+    <div class="copy-buttons">
+      <button class="copy-btn" onclick="copyWeaponCommand(this, '1d10+DB')">
+        🎲 ダメージをコピー
+      </button>
+    </div>
 
-          </div>
+    <div class="stat">
+      <div class="stat-label">耐久力</div>
+      <div class="stat-value">15</div>
+    </div>
 
-        </details>
+  </div>
 
+</details>
 
-        <!-- 薙刀 -->
 
-        <details class="weapon">
+<!-- 日本刀 -->
+<details class="weapon">
 
-          <summary>薙刀</summary>
+  <summary>日本刀</summary>
 
-          <div class="weapon-info">
+  <div class="weapon-info">
 
-            <div class="stat">
-              <div class="stat-label">命中率</div>
-              <div class="stat-value">15</div>
-            </div>
+    <div class="stat">
+      <div class="stat-label">命中率</div>
+      <div class="stat-value">15</div>
+    </div>
 
-            <div class="stat">
-              <div class="stat-label">ダメージ</div>
-              <div class="stat-value">1d8+DB</div>
-            </div>
+    <div class="copy-buttons">
+      <button class="copy-btn" onclick="copyWeaponCommand(this, 'CCB&lt;=15')">
+        🎲 命中率をコピー
+      </button>
+    </div>
 
-            <div class="stat">
-              <div class="stat-label">耐久力</div>
-              <div class="stat-value">15</div>
-            </div>
+    <div class="sub-section">
+      打刀／小太刀
+    </div>
 
-          </div>
+    <div class="stat">
+      <div class="stat-label">ダメージ</div>
+      <div class="stat-value">1d10+DB</div>
+    </div>
 
-        </details>
+    <div class="copy-buttons">
+      <button class="copy-btn" onclick="copyWeaponCommand(this, '1d10+DB')">
+        🎲 ダメージをコピー
+      </button>
+    </div>
 
+    <div class="stat">
+      <div class="stat-label">耐久力</div>
+      <div class="stat-value">20</div>
+    </div>
 
-        <!-- 大鎌 -->
+    <div class="sub-section">
+      脇差
+    </div>
 
-        <details class="weapon">
+    <div class="stat">
+      <div class="stat-label">ダメージ</div>
+      <div class="stat-value">1d6+DB</div>
+    </div>
 
-          <summary>大鎌</summary>
+    <div class="copy-buttons">
+      <button class="copy-btn" onclick="copyWeaponCommand(this, '1d6+DB')">
+        🎲 ダメージをコピー
+      </button>
+    </div>
 
-          <div class="weapon-info">
+    <div class="stat">
+      <div class="stat-label">耐久力</div>
+      <div class="stat-value">15</div>
+    </div>
 
-            <div class="stat">
-              <div class="stat-label">命中率</div>
-              <div class="stat-value">10</div>
-            </div>
+  </div>
 
-            <div class="stat">
-              <div class="stat-label">ダメージ</div>
-              <div class="stat-value">1d8+1+DB</div>
-            </div>
+</details>
 
-            <div class="stat">
-              <div class="stat-label">耐久力</div>
-              <div class="stat-value">30</div>
-            </div>
 
-          </div>
+<!-- 太刀 -->
+<details class="weapon">
 
-        </details>
+  <summary>太刀</summary>
 
+  <div class="weapon-info">
 
-        <!-- 絞殺 -->
+    <div class="stat">
+      <div class="stat-label">命中率</div>
+      <div class="stat-value">5</div>
+    </div>
 
-        <details class="weapon">
+    <div class="copy-buttons">
+      <button class="copy-btn" onclick="copyWeaponCommand(this, 'CCB&lt;=5')">
+        🎲 命中率をコピー
+      </button>
+    </div>
 
-          <summary>絞殺（ロープ）</summary>
+    <div class="stat">
+      <div class="stat-label">ダメージ</div>
+      <div class="stat-value">2d8+DB</div>
+    </div>
 
-          <div class="weapon-info">
+    <div class="copy-buttons">
+      <button class="copy-btn" onclick="copyWeaponCommand(this, '2d8+DB')">
+        🎲 ダメージをコピー
+      </button>
+    </div>
 
-            <div class="stat">
-              <div class="stat-label">命中率</div>
-              <div class="stat-value">15</div>
-            </div>
+    <div class="stat">
+      <div class="stat-label">耐久力</div>
+      <div class="stat-value">30</div>
+    </div>
 
-            <div class="stat">
-              <div class="stat-label">ダメージ</div>
-              <div class="stat-value">窒息</div>
-            </div>
+  </div>
 
-            <div class="stat">
-              <div class="stat-label">耐久力</div>
-              <div class="stat-value">1</div>
-            </div>
+</details>
 
-          </div>
 
-        </details>
+<!-- 薙刀 -->
+<details class="weapon">
 
+  <summary>薙刀</summary>
 
-        <!-- スタンガン -->
+  <div class="weapon-info">
 
-        <details class="weapon">
+    <div class="stat">
+      <div class="stat-label">命中率</div>
+      <div class="stat-value">15</div>
+    </div>
 
-          <summary>スタンガン</summary>
+    <div class="copy-buttons">
+      <button class="copy-btn" onclick="copyWeaponCommand(this, 'CCB&lt;=15')">
+        🎲 命中率をコピー
+      </button>
+    </div>
 
-          <div class="weapon-info">
+    <div class="stat">
+      <div class="stat-label">ダメージ</div>
+      <div class="stat-value">1d8+DB</div>
+    </div>
 
-            <div class="stat">
-              <div class="stat-label">命中率</div>
-              <div class="stat-value">〈こぶし〉</div>
-            </div>
+    <div class="copy-buttons">
+      <button class="copy-btn" onclick="copyWeaponCommand(this, '1d8+DB')">
+        🎲 ダメージをコピー
+      </button>
+    </div>
 
-            <div class="stat">
-              <div class="stat-label">ダメージ</div>
-              <div class="stat-value">スタン</div>
-            </div>
+    <div class="stat">
+      <div class="stat-label">耐久力</div>
+      <div class="stat-value">15</div>
+    </div>
 
-            <div class="stat">
-              <div class="stat-label">故障ナンバー</div>
-              <div class="stat-value">97</div>
-            </div>
+  </div>
 
-            <div class="stat">
-              <div class="stat-label">耐久力</div>
-              <div class="stat-value">7</div>
-            </div>
+</details>
 
-          </div>
 
-        </details>
+<!-- 大鎌 -->
+<details class="weapon">
 
+  <summary>大鎌</summary>
 
-        <!-- ムチ -->
+  <div class="weapon-info">
 
-        <details class="weapon">
+    <div class="stat">
+      <div class="stat-label">命中率</div>
+      <div class="stat-value">10</div>
+    </div>
 
-          <summary>ムチ</summary>
+    <div class="copy-buttons">
+      <button class="copy-btn" onclick="copyWeaponCommand(this, 'CCB&lt;=10')">
+        🎲 命中率をコピー
+      </button>
+    </div>
 
-          <div class="weapon-info">
+    <div class="stat">
+      <div class="stat-label">ダメージ</div>
+      <div class="stat-value">1d8+1+DB</div>
+    </div>
 
-            <div class="stat">
-              <div class="stat-label">命中率</div>
-              <div class="stat-value">5</div>
-            </div>
+    <div class="copy-buttons">
+      <button class="copy-btn" onclick="copyWeaponCommand(this, '1d8+1+DB')">
+        🎲 ダメージをコピー
+      </button>
+    </div>
 
-            <div class="stat">
-              <div class="stat-label">ダメージ</div>
-              <div class="stat-value">1d3</div>
-            </div>
+    <div class="stat">
+      <div class="stat-label">耐久力</div>
+      <div class="stat-value">30</div>
+    </div>
 
-            <div class="stat">
-              <div class="stat-label">耐久力</div>
-              <div class="stat-value">4</div>
-            </div>
+  </div>
 
-          </div>
+</details>
 
-        </details>
+
+<!-- 絞殺（ロープ） -->
+<details class="weapon">
+
+  <summary>絞殺（ロープ）</summary>
+
+  <div class="weapon-info">
+
+    <div class="stat">
+      <div class="stat-label">命中率</div>
+      <div class="stat-value">15</div>
+    </div>
+
+    <div class="copy-buttons">
+      <button class="copy-btn" onclick="copyWeaponCommand(this, 'CCB&lt;=15')">
+        🎲 命中率をコピー
+      </button>
+    </div>
+
+    <div class="stat">
+      <div class="stat-label">ダメージ</div>
+      <div class="stat-value">窒息</div>
+    </div>
+
+    <div class="stat">
+      <div class="stat-label">耐久力</div>
+      <div class="stat-value">1</div>
+    </div>
+
+  </div>
+
+</details>
+
+
+<!-- スタンガン -->
+<details class="weapon">
+
+  <summary>スタンガン</summary>
+
+  <div class="weapon-info">
+
+    <div class="stat">
+      <div class="stat-label">命中率</div>
+      <div class="stat-value">〈こぶし〉</div>
+    </div>
+
+    <div class="copy-buttons">
+      <button class="copy-btn" onclick="copyWeaponCommand(this, '【こぶし】')">
+        🎲 命中率をコピー
+      </button>
+    </div>
+
+    <div class="stat">
+      <div class="stat-label">ダメージ</div>
+      <div class="stat-value">スタン</div>
+    </div>
+
+    <div class="stat">
+      <div class="stat-label">故障ナンバー</div>
+      <div class="stat-value">97</div>
+    </div>
+
+    <div class="stat">
+      <div class="stat-label">耐久力</div>
+      <div class="stat-value">7</div>
+    </div>
+
+  </div>
+
+</details>
+
+
+<!-- ムチ -->
+<details class="weapon">
+
+  <summary>ムチ</summary>
+
+  <div class="weapon-info">
+
+    <div class="stat">
+      <div class="stat-label">命中率</div>
+      <div class="stat-value">5</div>
+    </div>
+
+    <div class="copy-buttons">
+      <button class="copy-btn" onclick="copyWeaponCommand(this, 'CCB&lt;=5')">
+        🎲 命中率をコピー
+      </button>
+    </div>
+
+    <div class="stat">
+      <div class="stat-label">ダメージ</div>
+      <div class="stat-value">1d3</div>
+    </div>
+
+    <div class="copy-buttons">
+      <button class="copy-btn" onclick="copyWeaponCommand(this, '1d3')">
+        🎲 ダメージをコピー
+      </button>
+    </div>
+
+    <div class="stat">
+      <div class="stat-label">耐久力</div>
+      <div class="stat-value">4</div>
+    </div>
+
+  </div>
+
+</details>
 
 
       </div>
@@ -1168,5 +1399,29 @@
 
   </div>
 
+  <script>
+function copyWeaponCommand(button, text) {
+  navigator.clipboard.writeText(text).then(() => {
+
+    const originalText = button.textContent;
+
+    button.textContent = "✓ コピーしました";
+    button.classList.add("copied");
+
+    setTimeout(() => {
+      button.textContent = originalText;
+      button.classList.remove("copied");
+    }, 1200);
+
+  }).catch(() => {
+    button.textContent = "コピー失敗";
+
+    setTimeout(() => {
+      button.textContent = "🎲 コピー";
+    }, 1200);
+  });
+}
+</script>
+  
 </body>
 </html>
