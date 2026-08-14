@@ -780,6 +780,221 @@
 
 
 
+
+
+    /* ========================================
+   Animated Background
+======================================== */
+
+body {
+  background: #100b18;
+}
+
+.animated-background {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+
+  background:
+    radial-gradient(
+      circle at 50% 50%,
+      #21152f 0%,
+      #140d1d 55%,
+      #0d0813 100%
+    );
+}
+
+.background-blob {
+  position: absolute;
+  width: 55vw;
+  height: 55vw;
+  max-width: 850px;
+  max-height: 850px;
+
+  border-radius: 45% 55% 60% 40%;
+
+  background: #2a1a3b;
+  filter: blur(80px);
+
+  opacity: 0.38;
+
+  will-change: transform;
+}
+
+.blob-1 {
+  top: -15%;
+  left: -10%;
+  animation: blobMove1 32s ease-in-out infinite alternate;
+}
+
+.blob-2 {
+  top: 25%;
+  right: -15%;
+  width: 48vw;
+  height: 48vw;
+
+  background: #352046;
+  opacity: 0.28;
+
+  animation: blobMove2 39s ease-in-out infinite alternate;
+}
+
+.blob-3 {
+  bottom: -20%;
+  left: 20%;
+  width: 60vw;
+  height: 45vw;
+
+  background: #251532;
+  opacity: 0.34;
+
+  animation: blobMove3 45s ease-in-out infinite alternate;
+}
+
+.blob-4 {
+  top: 40%;
+  left: 35%;
+  width: 38vw;
+  height: 38vw;
+
+  background: #40244f;
+  opacity: 0.18;
+
+  animation: blobMove4 52s ease-in-out infinite alternate;
+}
+
+
+/* ----------------------------------------
+   ゆっくりした背景の動き
+---------------------------------------- */
+
+@keyframes blobMove1 {
+  0% {
+    transform:
+      translate(-5%, -3%)
+      scale(1)
+      rotate(0deg);
+  }
+
+  50% {
+    transform:
+      translate(15%, 10%)
+      scale(1.12)
+      rotate(25deg);
+  }
+
+  100% {
+    transform:
+      translate(3%, 20%)
+      scale(0.94)
+      rotate(-15deg);
+  }
+}
+
+@keyframes blobMove2 {
+  0% {
+    transform:
+      translate(5%, 5%)
+      scale(1.05)
+      rotate(0deg);
+  }
+
+  50% {
+    transform:
+      translate(-15%, -8%)
+      scale(0.9)
+      rotate(-20deg);
+  }
+
+  100% {
+    transform:
+      translate(-5%, 15%)
+      scale(1.1)
+      rotate(15deg);
+  }
+}
+
+@keyframes blobMove3 {
+  0% {
+    transform:
+      translate(0%, 5%)
+      scale(1)
+      rotate(-10deg);
+  }
+
+  50% {
+    transform:
+      translate(12%, -12%)
+      scale(1.1)
+      rotate(15deg);
+  }
+
+  100% {
+    transform:
+      translate(-10%, -3%)
+      scale(0.95)
+      rotate(30deg);
+  }
+}
+
+@keyframes blobMove4 {
+  0% {
+    transform:
+      translate(-10%, 0%)
+      scale(0.9);
+  }
+
+  50% {
+    transform:
+      translate(15%, 12%)
+      scale(1.15);
+  }
+
+  100% {
+    transform:
+      translate(-5%, -15%)
+      scale(1);
+  }
+}
+
+
+/* ----------------------------------------
+   スマホでは少し軽くする
+---------------------------------------- */
+
+@media (max-width: 600px) {
+
+  .background-blob {
+    filter: blur(60px);
+  }
+
+  .blob-1 {
+    width: 75vw;
+    height: 75vw;
+  }
+
+  .blob-2 {
+    width: 65vw;
+    height: 65vw;
+  }
+
+  .blob-3 {
+    width: 80vw;
+    height: 60vw;
+  }
+
+  .blob-4 {
+    width: 55vw;
+    height: 55vw;
+  }
+
+}
+
+
+
+
     
 
   </style>
@@ -787,6 +1002,19 @@
 
 
 <body>
+
+
+
+  <div class="animated-background">
+  <div class="background-blob blob-1"></div>
+  <div class="background-blob blob-2"></div>
+  <div class="background-blob blob-3"></div>
+  <div class="background-blob blob-4"></div>
+</div>
+
+
+
+  
 
   <div class="container">
 
