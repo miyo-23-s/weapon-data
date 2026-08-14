@@ -175,24 +175,42 @@
     }
 
 
-    /* ========================================
+/* ========================================
    メインタイトル＋銀の鍵
 ======================================== */
 
 .weapon-title {
+  position: relative;
+
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 12px;
+
+  width: 100%;
+}
+
+.weapon-title h1 {
+  position: relative;
+  z-index: 1;
+
+  margin: 0;
+
+  white-space: nowrap;
 }
 
 .silver-key-title {
-  width: 38px;
-  height: 38px;
+  position: absolute;
+
+  width: 72px;
+  height: 72px;
+
+  left: calc(50% - 255px);
+
+  z-index: 2;
 
   object-fit: contain;
 
-  opacity: 0.88;
+  opacity: 0.9;
 
   filter:
     drop-shadow(0 0 4px rgba(220, 215, 235, 0.35))
@@ -212,22 +230,6 @@
     drop-shadow(0 0 16px rgba(154, 117, 209, 0.4));
 
   transform: scale(1.05);
-}
-
-
-/* スマホ */
-
-@media (max-width: 600px) {
-
-  .weapon-title {
-    gap: 8px;
-  }
-
-  .silver-key-title {
-    width: 28px;
-    height: 28px;
-  }
-
 }
 
 
