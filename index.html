@@ -175,6 +175,64 @@
     }
 
 
+    /* ========================================
+   メインタイトル＋銀の鍵
+======================================== */
+
+.weapon-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.silver-key-title {
+  width: 38px;
+  height: 38px;
+
+  object-fit: contain;
+
+  opacity: 0.88;
+
+  filter:
+    drop-shadow(0 0 4px rgba(220, 215, 235, 0.35))
+    drop-shadow(0 0 10px rgba(154, 117, 209, 0.18));
+
+  transition:
+    filter 0.3s ease,
+    transform 0.3s ease,
+    opacity 0.3s ease;
+}
+
+.silver-key-title:hover {
+  opacity: 1;
+
+  filter:
+    drop-shadow(0 0 6px rgba(240, 238, 250, 0.55))
+    drop-shadow(0 0 16px rgba(154, 117, 209, 0.4));
+
+  transform: scale(1.05);
+}
+
+
+/* スマホ */
+
+@media (max-width: 600px) {
+
+  .weapon-title {
+    gap: 8px;
+  }
+
+  .silver-key-title {
+    width: 28px;
+    height: 28px;
+  }
+
+}
+
+
+
+
 
 
     /* ========================================
@@ -1101,7 +1159,10 @@ body {
         CLASSIFIED DATABASE
       </div>
 
-      <h1>WEAPON DATABASE</h1>
+<div class="weapon-title">
+  <img src="silver-key.png" class="silver-key-title" alt="">
+  <h1>WEAPON DATABASE</h1>
+</div>
 
       <div class="header-title">
         武 器 資 料
