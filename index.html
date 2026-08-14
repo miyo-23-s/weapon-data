@@ -994,71 +994,96 @@ body {
 
 
 
-    /* ========================================
+/* ========================================
    Rainbow Shooting Stars
 ======================================== */
 
-.shooting-star-layer {
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  overflow: hidden;
-  pointer-events: none;
-}
-
 .shooting-star {
   position: absolute;
-  width: 120px;
-  height: 1px;
 
-  border-radius: 999px;
+  width: 4px;
+  height: 4px;
+
+  border-radius: 50%;
 
   opacity: 0;
-
-  transform-origin: right center;
 
   background: var(--shooting-star-color);
 
   box-shadow:
     0 0 4px var(--shooting-star-color),
-    0 0 10px var(--shooting-star-color),
-    0 0 18px var(--shooting-star-color);
+    0 0 9px var(--shooting-star-color),
+    0 0 18px var(--shooting-star-color),
+    0 0 30px var(--shooting-star-color);
 
-  animation: shootingStar 1.4s linear forwards;
+  animation: shootingStar 1.4s ease-out forwards;
 }
+
+
+/* 光の尾 */
+.shooting-star::after {
+  content: "";
+
+  position: absolute;
+
+  width: 90px;
+  height: 2px;
+
+  top: 50%;
+  right: 3px;
+
+  transform: translateY(-50%);
+
+  border-radius: 999px;
+
+  background: linear-gradient(
+    to left,
+    var(--shooting-star-color),
+    transparent
+  );
+
+  filter: blur(1px);
+
+  opacity: 0.7;
+}
+
 
 @keyframes shootingStar {
 
   0% {
     opacity: 0;
+
     transform:
       translate(0, 0)
       rotate(var(--shooting-star-angle))
-      scaleX(0.2);
+      scale(0.4);
   }
 
-  15% {
-    opacity: 0.9;
+  12% {
+    opacity: 1;
+
     transform:
-      translate(-30px, 30px)
+      translate(-20px, 20px)
       rotate(var(--shooting-star-angle))
-      scaleX(0.7);
+      scale(1);
   }
 
-  70% {
-    opacity: 0.8;
+  65% {
+    opacity: 0.85;
+
     transform:
-      translate(-220px, 220px)
+      translate(-230px, 230px)
       rotate(var(--shooting-star-angle))
-      scaleX(1);
+      scale(0.9);
   }
 
   100% {
     opacity: 0;
+
     transform:
       translate(-360px, 360px)
       rotate(var(--shooting-star-angle))
-      scaleX(1.1);
+      scale(0.5);
   }
 
 }
