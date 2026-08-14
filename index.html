@@ -301,16 +301,19 @@
        武器カードのグリッド
     ========================= */
 
-    .weapon-grid {
-      display: grid;
+.weapon-grid {
+  display: grid;
 
-      grid-template-columns:
-        repeat(3, minmax(0, 1fr));
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
 
-      gap: 12px;
+  gap: 12px;
 
-      padding: 18px;
-    }
+  padding: 18px;
+
+  /* カードの高さを行単位で揃えない */
+  align-items: start;
+}
 
 
     /* =========================
@@ -863,44 +866,42 @@
 
           <summary>ガラス瓶</summary>
 
-          <div class="weapon-info">
+<div class="weapon-info">
 
-            <div class="sub-section">
-              割れていないもの
-            </div>
+  <div class="stat">
+    <div class="stat-label">耐久力</div>
+    <div class="stat-value">1</div>
+  </div>
 
-            <div class="stat">
-              <div class="stat-label">命中率</div>
-              <div class="stat-value">〈杖〉</div>
-            </div>
+  <div class="sub-section">
+    割れていないもの
+  </div>
 
-            <div class="stat">
-              <div class="stat-label">ダメージ</div>
-              <div class="stat-value">1d3</div>
-            </div>
+  <div class="stat">
+    <div class="stat-label">命中率</div>
+    <div class="stat-value">〈杖〉</div>
+  </div>
 
+  <div class="stat">
+    <div class="stat-label">ダメージ</div>
+    <div class="stat-value">1d3</div>
+  </div>
 
-            <div class="sub-section">
-              割れているもの
-            </div>
+  <div class="sub-section">
+    割れているもの
+  </div>
 
-            <div class="stat">
-              <div class="stat-label">命中率</div>
-              <div class="stat-value">〈ナイフ〉</div>
-            </div>
+  <div class="stat">
+    <div class="stat-label">命中率</div>
+    <div class="stat-value">〈ナイフ〉</div>
+  </div>
 
-            <div class="stat">
-              <div class="stat-label">ダメージ</div>
-              <div class="stat-value">1d4（貫通）</div>
-            </div>
+  <div class="stat">
+    <div class="stat-label">ダメージ</div>
+    <div class="stat-value">1d4（貫通）</div>
+  </div>
 
-
-            <div class="stat">
-              <div class="stat-label">耐久力</div>
-              <div class="stat-value">1</div>
-            </div>
-
-          </div>
+</div>
 
         </details>
 
