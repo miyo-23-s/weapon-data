@@ -994,6 +994,77 @@ body {
 
 
 
+    /* ========================================
+   Rainbow Shooting Stars
+======================================== */
+
+.shooting-star-layer {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.shooting-star {
+  position: absolute;
+  width: 120px;
+  height: 1px;
+
+  border-radius: 999px;
+
+  opacity: 0;
+
+  transform-origin: right center;
+
+  background: var(--shooting-star-color);
+
+  box-shadow:
+    0 0 4px var(--shooting-star-color),
+    0 0 10px var(--shooting-star-color),
+    0 0 18px var(--shooting-star-color);
+
+  animation: shootingStar 1.4s linear forwards;
+}
+
+@keyframes shootingStar {
+
+  0% {
+    opacity: 0;
+    transform:
+      translate(0, 0)
+      rotate(var(--shooting-star-angle))
+      scaleX(0.2);
+  }
+
+  15% {
+    opacity: 0.9;
+    transform:
+      translate(-30px, 30px)
+      rotate(var(--shooting-star-angle))
+      scaleX(0.7);
+  }
+
+  70% {
+    opacity: 0.8;
+    transform:
+      translate(-220px, 220px)
+      rotate(var(--shooting-star-angle))
+      scaleX(1);
+  }
+
+  100% {
+    opacity: 0;
+    transform:
+      translate(-360px, 360px)
+      rotate(var(--shooting-star-angle))
+      scaleX(1.1);
+  }
+
+}
+
+
+
 
     
 
@@ -1011,6 +1082,8 @@ body {
   <div class="background-blob blob-3"></div>
   <div class="background-blob blob-4"></div>
 </div>
+
+  <div class="shooting-star-layer"></div>
 
 
 
@@ -2427,6 +2500,98 @@ function copyWeaponCommand(button, text) {
   });
 }
 </script>
+
+
+
+
+
+
+  <script>
+/* ========================================
+   Rainbow Shooting Stars
+======================================== */
+
+const shootingStarLayer = document.querySelector('.shooting-star-layer');
+
+const shootingStarColors = [
+  '#ff5f6d',
+  '#ffb347',
+  '#ffe66d',
+  '#6ee7b7',
+  '#5ec8ff',
+  '#9b7cff',
+  '#ff7ce5'
+];
+
+function createShootingStar() {
+
+  if (!shootingStarLayer) return;
+
+  const star = document.createElement('div');
+
+  star.className = 'shooting-star';
+
+  const color =
+    shootingStarColors[
+      Math.floor(Math.random() * shootingStarColors.length)
+    ];
+
+  const angle =
+    35 + Math.random() * 20;
+
+  const startX =
+    Math.random() * window.innerWidth;
+
+  const startY =
+    Math.random() * window.innerHeight * 0.75;
+
+  star.style.left = `${startX}px`;
+  star.style.top = `${startY}px`;
+
+  star.style.setProperty(
+    '--shooting-star-color',
+    color
+  );
+
+  star.style.setProperty(
+    '--shooting-star-angle',
+    `${angle}deg`
+  );
+
+  shootingStarLayer.appendChild(star);
+
+  setTimeout(() => {
+    star.remove();
+  }, 1500);
+}
+
+
+/* ----------------------------------------
+   次の流れ星までの時間をランダムにする
+---------------------------------------- */
+
+function scheduleShootingStar() {
+
+  const delay =
+    5000 + Math.random() * 12000;
+
+  setTimeout(() => {
+
+    createShootingStar();
+
+    scheduleShootingStar();
+
+  }, delay);
+}
+
+
+/* 開始 */
+scheduleShootingStar();
+</script>
+
+
+
+  
   
 </body>
 </html>
