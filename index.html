@@ -1185,6 +1185,9 @@ body {
   visibility: visible;
 
   transform: translateY(0) scale(1);
+
+  /* ゆっくり浮遊 */
+  animation: keyFloat 4s ease-in-out infinite;
 }
 
 .back-to-top img {
@@ -1202,10 +1205,37 @@ body {
     transform 0.3s ease;
 }
 
+
+/* ----------------------------------------
+   銀の鍵：浮遊モーション
+---------------------------------------- */
+
+@keyframes keyFloat {
+
+  0%,
+  100% {
+    transform:
+      translateY(0)
+      rotate(-1deg);
+  }
+
+  50% {
+    transform:
+      translateY(-7px)
+      rotate(1deg);
+  }
+
+}
+
+
 .back-to-top:hover {
   opacity: 1;
 
-  transform: translateY(0) scale(1.08);
+  animation-play-state: paused;
+
+  transform:
+    translateY(0)
+    scale(1.08);
 }
 
 .back-to-top:hover img {
@@ -2753,7 +2783,7 @@ scheduleTwinkle();
 
 window.addEventListener("scroll", () => {
 
-  if (window.scrollY > 300) {
+  if (window.scrollY > 50) {
     backToTop.classList.add("show");
   } else {
     backToTop.classList.remove("show");
