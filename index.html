@@ -994,100 +994,62 @@ body {
 
 
 
+
 /* ========================================
-   Rainbow Shooting Stars
+   Rainbow Twinkle
 ======================================== */
 
-.shooting-star {
+.twinkle-layer {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.twinkle {
   position: absolute;
 
-  width: 4px;
-  height: 4px;
+  width: 5px;
+  height: 5px;
 
   border-radius: 50%;
 
+  background: var(--twinkle-color);
+
   opacity: 0;
 
-  background: var(--shooting-star-color);
-
   box-shadow:
-    0 0 4px var(--shooting-star-color),
-    0 0 9px var(--shooting-star-color),
-    0 0 18px var(--shooting-star-color),
-    0 0 30px var(--shooting-star-color);
+    0 0 5px var(--twinkle-color),
+    0 0 12px var(--twinkle-color),
+    0 0 24px var(--twinkle-color);
 
-  animation: shootingStar 1.4s ease-out forwards;
+  animation: twinkleFade 1.8s ease-in-out forwards;
 }
 
-
-/* 光の尾 */
-.shooting-star::after {
-  content: "";
-
-  position: absolute;
-
-  width: 90px;
-  height: 2px;
-
-  top: 50%;
-  left: 3px;
-
-  transform: translateY(-50%);
-
-  border-radius: 999px;
-
-  background: linear-gradient(
-    to right,
-    transparent,
-    var(--shooting-star-color)
-  );
-
-  filter: blur(1px);
-
-  opacity: 0.7;
-}
-
-
-@keyframes shootingStar {
+@keyframes twinkleFade {
 
   0% {
     opacity: 0;
-
-    transform:
-      translate(0, 0)
-      rotate(var(--shooting-star-angle))
-      scale(0.4);
+    transform: scale(0.3);
   }
 
-  12% {
+  35% {
+    opacity: 0.8;
+    transform: scale(1);
+  }
+
+  55% {
     opacity: 1;
-
-    transform:
-      translate(-20px, 20px)
-      rotate(var(--shooting-star-angle))
-      scale(1);
-  }
-
-  65% {
-    opacity: 0.85;
-
-    transform:
-      translate(-230px, 230px)
-      rotate(var(--shooting-star-angle))
-      scale(0.9);
+    transform: scale(1.15);
   }
 
   100% {
     opacity: 0;
-
-    transform:
-      translate(-360px, 360px)
-      rotate(var(--shooting-star-angle))
-      scale(0.5);
+    transform: scale(0.3);
   }
 
 }
-
 
 
 
@@ -1111,7 +1073,7 @@ body {
   <div class="background-blob blob-4"></div>
 </div>
 
-  <div class="shooting-star-layer"></div>
+  <div class="twinkle-layer"></div>
 
 
 
@@ -2536,12 +2498,12 @@ function copyWeaponCommand(button, text) {
 
   <script>
 /* ========================================
-   Rainbow Shooting Stars
+   Rainbow Twinkle
 ======================================== */
 
-const shootingStarLayer = document.querySelector('.shooting-star-layer');
+const twinkleLayer = document.querySelector('.twinkle-layer');
 
-const shootingStarColors = [
+const twinkleColors = [
   '#ff5f6d',
   '#ffb347',
   '#ffe66d',
@@ -2551,72 +2513,55 @@ const shootingStarColors = [
   '#ff7ce5'
 ];
 
-function createShootingStar() {
+function createTwinkle() {
 
-  if (!shootingStarLayer) return;
+  if (!twinkleLayer) return;
 
-  const star = document.createElement('div');
+  const twinkle = document.createElement('div');
 
-  star.className = 'shooting-star';
+  twinkle.className = 'twinkle';
 
   const color =
-    shootingStarColors[
-      Math.floor(Math.random() * shootingStarColors.length)
+    twinkleColors[
+      Math.floor(Math.random() * twinkleColors.length)
     ];
 
-  const angle =
-    35 + Math.random() * 20;
+  const x = Math.random() * window.innerWidth;
+  const y = Math.random() * window.innerHeight;
 
-  const startX =
-    Math.random() * window.innerWidth;
+  twinkle.style.left = `${x}px`;
+  twinkle.style.top = `${y}px`;
 
-  const startY =
-    Math.random() * window.innerHeight * 0.75;
-
-  star.style.left = `${startX}px`;
-  star.style.top = `${startY}px`;
-
-  star.style.setProperty(
-    '--shooting-star-color',
+  twinkle.style.setProperty(
+    '--twinkle-color',
     color
   );
 
-  star.style.setProperty(
-    '--shooting-star-angle',
-    `${angle}deg`
-  );
-
-  shootingStarLayer.appendChild(star);
+  twinkleLayer.appendChild(twinkle);
 
   setTimeout(() => {
-    star.remove();
-  }, 1500);
+    twinkle.remove();
+  }, 2000);
 }
 
 
-/* ----------------------------------------
-   次の流れ星までの時間をランダムにする
----------------------------------------- */
-
-function scheduleShootingStar() {
+function scheduleTwinkle() {
 
   const delay =
     5000 + Math.random() * 12000;
 
   setTimeout(() => {
 
-    createShootingStar();
+    createTwinkle();
 
-    scheduleShootingStar();
+    scheduleTwinkle();
 
   }, delay);
 }
 
 
-/* 開始 */
-scheduleShootingStar();
+scheduleTwinkle();
 </script>
-
 
 
   
