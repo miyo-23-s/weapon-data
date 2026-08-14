@@ -1219,12 +1219,14 @@ body {
 
 .back-to-top:hover {
   opacity: 1;
+}
 
-  animation-play-state: paused;
+.back-to-top:hover img {
+  transform: scale(1.08);
 
-  transform:
-    translateY(0)
-    scale(1.08);
+  filter:
+    drop-shadow(0 0 8px rgba(240, 238, 250, 0.55))
+    drop-shadow(0 0 18px rgba(154, 117, 209, 0.4));
 }
 
 .back-to-top:hover img {
