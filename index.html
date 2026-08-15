@@ -1235,21 +1235,16 @@ body {
   color: #ffffff;
 }
 
-.back-to-top:not(.show):hover {
+.back-to-top:not(.show) {
   opacity: 0;
   visibility: hidden;
   transform: none;
+  pointer-events: none;
 }
 
 .back-to-top:hover img {
   transform: scale(1.08);
 
-  filter:
-    drop-shadow(0 0 8px rgba(240, 238, 250, 0.55))
-    drop-shadow(0 0 18px rgba(154, 117, 209, 0.4));
-}
-
-.back-to-top:hover img {
   filter:
     drop-shadow(0 0 8px rgba(240, 238, 250, 0.55))
     drop-shadow(0 0 18px rgba(154, 117, 209, 0.4));
