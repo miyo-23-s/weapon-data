@@ -1167,15 +1167,13 @@ body {
   visibility: visible;
 }
 
-.back-to-top.show img {
-  animation: keyFloat 4s ease-in-out infinite;
-}
-
 .back-to-top img {
   width: 72px;
   height: 72px;
 
   object-fit: contain;
+
+  animation: keyFloat 4s ease-in-out infinite;
 
   filter:
     drop-shadow(0 0 5px rgba(220, 215, 235, 0.35))
@@ -2825,14 +2823,9 @@ document.addEventListener("DOMContentLoaded", () => {
   window.addEventListener("scroll", () => {
 
     if (window.scrollY > 50) {
-
       backToTop.classList.add("show");
-      backToTop.classList.remove("hiding");
-
     } else {
-
       backToTop.classList.remove("show");
-
     }
 
   });
@@ -2840,8 +2833,6 @@ document.addEventListener("DOMContentLoaded", () => {
   backToTop.addEventListener("click", (event) => {
 
     event.preventDefault();
-
-    backToTop.classList.add("hiding");
 
     window.scrollTo({
       top: 0,
