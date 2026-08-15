@@ -2828,6 +2828,8 @@ backToTop.addEventListener("click", (event) => {
 
   event.preventDefault();
 
+  backToTop.classList.remove("show");
+
   window.scrollTo({
     top: 0,
     behavior: "smooth"
