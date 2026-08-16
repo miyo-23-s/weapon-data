@@ -1453,8 +1453,13 @@ body.rare-entry {
     drop-shadow(0 0 20px rgba(255, 30, 30, 0.25))
     drop-shadow(0 0 60px rgba(120, 0, 0, 0.18));
 
-  transform: scale(0.92);
+  transform: scale(1);
 }
+
+
+/* ----------------------------------------
+   目：表示
+---------------------------------------- */
 
 .rare-eye.show {
   opacity: 1;
@@ -1462,8 +1467,13 @@ body.rare-entry {
 }
 
 .rare-eye.show img {
-  animation: rareEyeAppear 1.8s ease-in-out forwards;
+  animation: rareEyeAppear 2.4s ease-in-out forwards;
 }
+
+
+/* ----------------------------------------
+   目：出現 → 静止 → 消える
+---------------------------------------- */
 
 @keyframes rareEyeAppear {
 
@@ -1472,17 +1482,12 @@ body.rare-entry {
     transform: scale(1);
   }
 
-  30% {
-    opacity: 0.35;
-    transform: scale(1);
-  }
-
-  55% {
+  25% {
     opacity: 1;
     transform: scale(1);
   }
 
-  75% {
+  70% {
     opacity: 1;
     transform: scale(1);
   }
@@ -3443,11 +3448,11 @@ document.addEventListener("DOMContentLoaded", () => {
      通常のフェードインより少し長く暗転させる
   */
 
-  setTimeout(() => {
+setTimeout(() => {
 
-    rareEye.classList.add("show");
+  rareEye.classList.add("show");
 
-  }, 800);
+}, 1000);
 
 
 });
