@@ -3416,7 +3416,7 @@ function playLoop() {
 
 
 
-  <script>
+<script>
 /* ========================================
    レア演出：5%の確率で単眼が出現
 ======================================== */
@@ -3438,22 +3438,47 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   /* ----------------------------------------
-     レア演出開始
+     目の画像を先読み
   ---------------------------------------- */
 
-  document.body.classList.add("rare-entry");
+  const eyeImage = rareEye.querySelector("img");
+
+  if (!eyeImage) return;
 
 
-  /*
-     通常のフェードインより少し長く暗転させる
-  */
+  const showRareEye = () => {
 
-setTimeout(() => {
+    document.body.classList.add("rare-entry");
 
-  rareEye.classList.add("show");
 
-}, 700);
+    /* 暗転を少し保持してから目を表示 */
 
+    setTimeout(() => {
+
+      rareEye.classList.add("show");
+
+    }, 700);
+
+  };
+
+
+  /* ----------------------------------------
+     画像が読み込み済みなら即開始
+  ---------------------------------------- */
+
+  if (eyeImage.complete) {
+
+    showRareEye();
+
+  } else {
+
+    eyeImage.addEventListener(
+      "load",
+      showRareEye,
+      { once: true }
+    );
+
+  }
 
 });
 </script>
