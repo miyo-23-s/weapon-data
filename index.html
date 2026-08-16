@@ -1467,7 +1467,8 @@ body.rare-entry {
 }
 
 .rare-eye.show img {
-  animation: rareEyeAppear 1.5s ease-in-out forwards;
+  opacity: 1;
+  transform: scale(1);
 }
 
 
@@ -3417,68 +3418,13 @@ function playLoop() {
 
 
 <script>
-/* ========================================
-   レア演出：5%の確率で単眼が出現
-======================================== */
-
 document.addEventListener("DOMContentLoaded", () => {
 
   const rareEye = document.querySelector(".rare-eye");
 
   if (!rareEye) return;
 
-
-  /* ----------------------------------------
-     5%の確率でレア演出
-  ---------------------------------------- */
-
-  const isRare = Math.random() < 0.05;
-
-  if (!isRare) return;
-
-
-  /* ----------------------------------------
-     目の画像を先読み
-  ---------------------------------------- */
-
-  const eyeImage = rareEye.querySelector("img");
-
-  if (!eyeImage) return;
-
-
-  const showRareEye = () => {
-
-    document.body.classList.add("rare-entry");
-
-
-    /* 暗転を少し保持してから目を表示 */
-
-    setTimeout(() => {
-
-      rareEye.classList.add("show");
-
-    }, 700);
-
-  };
-
-
-  /* ----------------------------------------
-     画像が読み込み済みなら即開始
-  ---------------------------------------- */
-
-  if (eyeImage.complete) {
-
-    showRareEye();
-
-  } else {
-
-    eyeImage.addEventListener(
-      "load",
-      showRareEye,
-      { once: true }
-    );
-
-  }
+  rareEye.classList.add("show");
 
 });
 </script>
