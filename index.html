@@ -1413,7 +1413,7 @@ body {
 }
 
 .rare-eye.show img {
-  animation: rareEyeBgmAppear 8s ease-in-out forwards;
+  animation: rareEyeBgmAppear 15s ease-in-out forwards;
 }
 
 
@@ -1423,12 +1423,12 @@ body {
     opacity: 0;
   }
 
-  20% {
-    opacity: 0.10;
+  10% {
+    opacity: 0;
   }
 
-  45% {
-    opacity: 0.14;
+  20% {
+    opacity: 0.10;
   }
 
   70% {
@@ -3333,7 +3333,7 @@ function playLoop() {
    レアアイ：30%の確率
 ---------------------------------------- */
 
-if (Math.random() < 0.30) {
+if (Math.random() < 0.50) {
 
   const rareEye = document.querySelector(".rare-eye");
 
