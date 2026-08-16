@@ -2956,6 +2956,251 @@ document.addEventListener("DOMContentLoaded", () => {
   <span class="bgm-label">BGM OFF</span>
 </button>
 
+<script>
+/* ========================================
+   BGM　Web Audio API
+======================================== */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+  const bgmButton = document.querySelector(".bgm-toggle");
+  const bgmLabel = bgmButton?.querySelector(".bgm-label");
+
+  if (!bgmButton || !bgmLabel) return;
+
+
+  let audioContext = null;
+  let masterGain = null;
+  let isPlaying = false;
+  let loopTimer = null;
+
+
+  /* ----------------------------------------
+     音階
+  ---------------------------------------- */
+
+  const notes = {
+    C3: 130.81,
+    D3: 146.83,
+    Eb3: 155.56,
+    G3: 196.00,
+    Bb3: 233.08,
+
+    C4: 261.63,
+    Eb4: 311.13,
+    G4: 392.00,
+    Bb4: 466.16,
+
+    C5: 523.25,
+    Eb5: 622.25,
+    G5: 783.99
+  };
+
+
+  /* ----------------------------------------
+     音を鳴らす
+  ---------------------------------------- */
+
+  function playTone(frequency, duration, volume, type = "sine") {
+
+    if (!audioContext || !masterGain) return;
+
+    const oscillator = audioContext.createOscillator();
+    const gain = audioContext.createGain();
+
+    oscillator.type = type;
+    oscillator.frequency.value = frequency;
+
+    gain.gain.setValueAtTime(0, audioContext.currentTime);
+
+    gain.gain.linearRampToValueAtTime(
+      volume,
+      audioContext.currentTime + 0.8
+    );
+
+    gain.gain.exponentialRampToValueAtTime(
+      0.001,
+      audioContext.currentTime + duration
+    );
+
+    oscillator.connect(gain);
+    gain.connect(masterGain);
+
+    oscillator.start();
+    oscillator.stop(audioContext.currentTime + duration);
+  }
+
+
+  /* ----------------------------------------
+     1ループ分
+  ---------------------------------------- */
+
+  function playLoop() {
+
+    if (!isPlaying) return;
+
+    const chord = [
+      notes.C3,
+      notes.G3,
+      notes.Bb3,
+      notes.Eb4
+    ];
+
+    chord.forEach((frequency, index) => {
+
+      playTone(
+        frequency,
+        5.5,
+        index === 0 ? 0.035 : 0.018,
+        "sine"
+      );
+
+    });
+
+
+    /* 小さな光のような高音 */
+
+    setTimeout(() => {
+
+      if (!isPlaying) return;
+
+      playTone(
+        notes.G5,
+        2.5,
+        0.025,
+        "sine"
+      );
+
+    }, 1300);
+
+
+    setTimeout(() => {
+
+      if (!isPlaying) return;
+
+      playTone(
+        notes.Eb5,
+        2.8,
+        0.018,
+        "sine"
+      );
+
+    }, 3400);
+
+
+    loopTimer = setTimeout(playLoop, 6000);
+  }
+
+
+  /* ----------------------------------------
+     BGM開始
+  ---------------------------------------- */
+
+  async function startBGM() {
+
+    if (!audioContext) {
+
+      audioContext =
+        new (window.AudioContext ||
+             window.webkitAudioContext)();
+
+      masterGain = audioContext.createGain();
+
+      masterGain.gain.value = 0;
+
+      masterGain.connect(audioContext.destination);
+    }
+
+
+    if (audioContext.state === "suspended") {
+      await audioContext.resume();
+    }
+
+
+    isPlaying = true;
+
+    bgmButton.classList.add("is-playing");
+    bgmLabel.textContent = "BGM ON";
+    bgmButton.setAttribute(
+      "aria-label",
+      "BGMを停止"
+    );
+
+
+    masterGain.gain.cancelScheduledValues(
+      audioContext.currentTime
+    );
+
+    masterGain.gain.setValueAtTime(
+      masterGain.gain.value,
+      audioContext.currentTime
+    );
+
+    masterGain.gain.linearRampToValueAtTime(
+      0.18,
+      audioContext.currentTime + 1.2
+    );
+
+
+    playLoop();
+  }
+
+
+  /* ----------------------------------------
+     BGM停止
+  ---------------------------------------- */
+
+  function stopBGM() {
+
+    isPlaying = false;
+
+    clearTimeout(loopTimer);
+
+
+    if (!audioContext || !masterGain) return;
+
+
+    masterGain.gain.cancelScheduledValues(
+      audioContext.currentTime
+    );
+
+    masterGain.gain.setValueAtTime(
+      masterGain.gain.value,
+      audioContext.currentTime
+    );
+
+    masterGain.gain.linearRampToValueAtTime(
+      0,
+      audioContext.currentTime + 0.8
+    );
+
+
+    bgmButton.classList.remove("is-playing");
+    bgmLabel.textContent = "BGM OFF";
+    bgmButton.setAttribute(
+      "aria-label",
+      "BGMを再生"
+    );
+  }
+
+
+  /* ----------------------------------------
+     ボタン
+  ---------------------------------------- */
+
+  bgmButton.addEventListener("click", () => {
+
+    if (isPlaying) {
+      stopBGM();
+    } else {
+      startBGM();
+    }
+
+  });
+
+});
+</script>
+
 
   
   
