@@ -3424,6 +3424,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (!rareEye) return;
 
+
+  /* 5%の確率 */
+  const isRare = Math.random() < 0.05;
+
+  if (!isRare) return;
+
+
+  /* レアなら目を表示 */
   rareEye.classList.add("show");
 
 });
