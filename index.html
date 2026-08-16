@@ -1390,6 +1390,110 @@ body {
 
 }
 
+/* ----------------------------------------
+   レア演出時のページフェードイン
+---------------------------------------- */
+
+body.rare-entry {
+  animation: rarePageFadeIn 2.8s ease-out both;
+}
+
+@keyframes rarePageFadeIn {
+
+  0% {
+    opacity: 0;
+  }
+
+  45% {
+    opacity: 0;
+  }
+
+  70% {
+    opacity: 0.25;
+  }
+
+  100% {
+    opacity: 1;
+  }
+
+}
+
+/* ========================================
+   レア演出：単眼
+======================================== */
+
+.rare-eye {
+  position: fixed;
+
+  inset: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  z-index: 9999;
+
+  opacity: 0;
+  visibility: hidden;
+
+  pointer-events: none;
+}
+
+.rare-eye img {
+  width: 560px;
+  max-width: 80vw;
+
+  height: auto;
+
+  object-fit: contain;
+
+  opacity: 0;
+
+  filter:
+    drop-shadow(0 0 20px rgba(255, 30, 30, 0.25))
+    drop-shadow(0 0 60px rgba(120, 0, 0, 0.18));
+
+  transform: scale(0.92);
+}
+
+.rare-eye.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.rare-eye.show img {
+  animation: rareEyeAppear 1.8s ease-in-out forwards;
+}
+
+@keyframes rareEyeAppear {
+
+  0% {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+
+  35% {
+    opacity: 0.35;
+    transform: scale(0.96);
+  }
+
+  60% {
+    opacity: 0.9;
+    transform: scale(1);
+  }
+
+  75% {
+    opacity: 1;
+    transform: scale(1.02);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(1.05);
+  }
+
+}
+
 
 
     
@@ -3303,6 +3407,56 @@ function playLoop() {
 
 });
 </script>
+
+
+
+
+  <script>
+/* ========================================
+   レア演出：5%の確率で単眼が出現
+======================================== */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+  const rareEye = document.querySelector(".rare-eye");
+
+  if (!rareEye) return;
+
+
+  /* ----------------------------------------
+     5%の確率でレア演出
+  ---------------------------------------- */
+
+  const isRare = Math.random() < 0.05;
+
+  if (!isRare) return;
+
+
+  /* ----------------------------------------
+     レア演出開始
+  ---------------------------------------- */
+
+  document.body.classList.add("rare-entry");
+
+
+  /*
+     通常のフェードインより少し長く暗転させる
+  */
+
+  setTimeout(() => {
+
+    rareEye.classList.add("show");
+
+  }, 800);
+
+
+});
+</script>
+
+    <!-- レア演出用の目 -->
+<div class="rare-eye" aria-hidden="true">
+  <img src="rare-eye.png" alt="">
+</div>
 
 
   
