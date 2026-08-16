@@ -1364,6 +1364,84 @@ body {
 }
 
 
+    /* ========================================
+   BGM連動：レアアイ
+======================================== */
+
+.rare-eye {
+  position: fixed;
+
+  inset: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  z-index: 1;
+
+  opacity: 0;
+  visibility: hidden;
+
+  pointer-events: none;
+}
+
+.rare-eye img {
+  width: 560px;
+  max-width: 80vw;
+
+  height: auto;
+
+  object-fit: contain;
+
+  opacity: 0;
+
+  filter:
+    drop-shadow(0 0 20px rgba(255, 30, 30, 0.18))
+    drop-shadow(0 0 60px rgba(120, 0, 0, 0.12));
+
+  transform: scale(1);
+}
+
+
+/* ----------------------------------------
+   レアアイ表示
+---------------------------------------- */
+
+.rare-eye.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.rare-eye.show img {
+  animation: rareEyeBgmAppear 8s ease-in-out forwards;
+}
+
+
+@keyframes rareEyeBgmAppear {
+
+  0% {
+    opacity: 0;
+  }
+
+  20% {
+    opacity: 0.10;
+  }
+
+  45% {
+    opacity: 0.14;
+  }
+
+  70% {
+    opacity: 0.10;
+  }
+
+  100% {
+    opacity: 0;
+  }
+
+}
+
+
 
 
 /* ========================================
@@ -2956,6 +3034,10 @@ document.addEventListener("DOMContentLoaded", () => {
   <span class="bgm-label">BGM OFF</span>
 </button>
 
+  <div class="rare-eye" aria-hidden="true">
+  <img src="rare-eye.png" alt="">
+</div>
+
 <script>
 /* ========================================
    BGM　Web Audio API
@@ -3246,6 +3328,28 @@ function playLoop() {
 
 
     playLoop();
+
+    /* ----------------------------------------
+   レアアイ：30%の確率
+---------------------------------------- */
+
+if (Math.random() < 0.30) {
+
+  const rareEye = document.querySelector(".rare-eye");
+
+  if (rareEye) {
+
+    rareEye.classList.remove("show");
+
+    /* アニメーションを再スタート */
+
+    void rareEye.offsetWidth;
+
+    rareEye.classList.add("show");
+
+  }
+
+}
   }
 
 
