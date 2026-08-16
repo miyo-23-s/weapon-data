@@ -1390,9 +1390,9 @@ body {
 
 }
 
-/* ----------------------------------------
-   レア演出時のページフェードイン
----------------------------------------- */
+/* ========================================
+   レア演出時：長めの暗転
+======================================== */
 
 body.rare-entry {
   animation: rarePageFadeIn 3.8s ease-out both;
@@ -3431,8 +3431,20 @@ document.addEventListener("DOMContentLoaded", () => {
   if (!isRare) return;
 
 
-  /* レアなら目を表示 */
-  rareEye.classList.add("show");
+  /* ----------------------------------------
+     レア演出開始
+  ---------------------------------------- */
+
+  document.body.classList.add("rare-entry");
+
+
+  /* 少し暗転を保持してから目を表示 */
+
+  setTimeout(() => {
+
+    rareEye.classList.add("show");
+
+  }, 700);
 
 });
 </script>
