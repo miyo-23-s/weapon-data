@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
+
+<script>
+  if (Math.random() < 1) {
+    document.documentElement.classList.add("rare-mode");
+  }
+</script>
+
+
+  
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -1392,6 +1401,55 @@ body {
 
 
 /* ========================================
+   レア演出：暗転レイヤー
+======================================== */
+
+/*
+   レア時だけ画面全体を真っ黒にする。
+   bodyのフェードインとは独立したレイヤー。
+*/
+
+html.rare-mode::before {
+  content: "";
+
+  position: fixed;
+
+  inset: 0;
+
+  z-index: 99998;
+
+  background: #000;
+
+  opacity: 1;
+
+  pointer-events: none;
+
+  animation: rareBlackout 4s ease-out forwards;
+}
+
+
+/* ----------------------------------------
+   暗転解除
+---------------------------------------- */
+
+@keyframes rareBlackout {
+
+  0% {
+    opacity: 1;
+  }
+
+  70% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+
+}
+
+
+/* ========================================
    レア演出：単眼
 ======================================== */
 
@@ -1406,9 +1464,8 @@ body {
 
   z-index: 99999;
 
-  background: #000;
-
   opacity: 0;
+
   visibility: hidden;
 
   pointer-events: none;
@@ -1448,29 +1505,21 @@ body {
 
 
 /* ----------------------------------------
-   目：出現 → 静止 → 消える
+   目：フェード
 ---------------------------------------- */
 
-@keyframes rareEyeAppear {
+.rare-eye.fade-out img {
+  animation: rareEyeFadeOut 0.8s ease-out forwards;
+}
+
+@keyframes rareEyeFadeOut {
 
   0% {
-    opacity: 0;
-    transform: scale(1);
-  }
-
-  25% {
     opacity: 1;
-    transform: scale(1);
-  }
-
-  70% {
-    opacity: 1;
-    transform: scale(1);
   }
 
   100% {
     opacity: 0;
-    transform: scale(1);
   }
 
 }
@@ -3400,22 +3449,35 @@ document.addEventListener("DOMContentLoaded", () => {
   if (!rareEye) return;
 
 
-  /* 5%の確率 */
+  /* ----------------------------------------
+     レアではない場合
+  ---------------------------------------- */
 
-  const isRare = Math.random() < 1.0;
-
-  if (!isRare) return;
+  if (!document.documentElement.classList.contains("rare-mode")) {
+    return;
+  }
 
 
   /* ----------------------------------------
-     レア演出開始
+     目を表示
   ---------------------------------------- */
 
   setTimeout(() => {
 
     rareEye.classList.add("show");
 
-  }, 700);
+  }, 800);
+
+
+  /* ----------------------------------------
+     目を消す
+  ---------------------------------------- */
+
+  setTimeout(() => {
+
+    rareEye.classList.add("fade-out");
+
+  }, 2600);
 
 });
 </script>
