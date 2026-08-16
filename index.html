@@ -728,7 +728,7 @@
   transform: translateX(-50%);
 
   width: max-content;
-  max-width: 300px;
+  max-width: 500px;
 
   padding: 8px 12px;
 
@@ -751,6 +751,13 @@
 .footer-note:hover .tooltip {
   opacity: 1;
   visibility: visible;
+}
+
+    @media (max-width: 600px) {
+  .tooltip {
+    width: 260px;
+    max-width: 70vw;
+  }
 }
 
 
@@ -2960,8 +2967,8 @@ body {
     <!-- フッター -->
 
     <footer class="footer">
-      WEAPON DATABASE / INFORMATION ARCHIVE
-
+      WEAPON DATABASE / INFORMATION ARCHIVE<br>
+  <br>
   <span class="footer-note">
     ※　BGMギミックについて　※
     <span class="tooltip">BGMをONにすると、70%の確率で”The eye”が音楽を聞きつけてあなたを観察しに来ます。<br>ちょっと放っておくと飽きていなくなります。<br>70%の運試しにどうぞ。</span>
